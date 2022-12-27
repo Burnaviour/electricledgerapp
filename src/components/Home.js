@@ -1,8 +1,9 @@
-import React from "react";
 export default function Home() {
   return (
     <>
-      <h1>Home</h1>
+      <section>
+        <h1>HyperLager Fabric </h1>
+      </section>
     </>
   );
 }
