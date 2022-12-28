@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function Form(props) {
+export default function MyForm(props) {
   const navigate = useNavigate();
   const [formData, setFormData] = React.useState({
     username: "",
@@ -65,6 +65,7 @@ export default function Form(props) {
       </select>
       <br />
       <br />
+
       <button>Submit</button>
     </form>
   );

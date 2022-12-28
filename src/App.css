@@ -66,3 +66,13 @@ textarea {
   border-radius: 5px;
   display: block;
 }
+
+header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.header-link {
+  margin: 0 20px;
+  text-decoration: none;
+}
