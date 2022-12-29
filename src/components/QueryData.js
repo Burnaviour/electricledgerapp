@@ -1,9 +1,19 @@
-import React from "react";
+import Alert from "react-bootstrap/Alert";
+import React, { useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 
 export default function QueryData() {
   const [formData, setFormData] = React.useState({
     args: " ",
+  });
+  const [showErrorAlert, setShowErrorAlert] = React.useState({
+    message: "",
+    error: false,
+  });
+  const [apiResponse, setApiResponse] = React.useState({
+    error: null,
+    errorData: null,
+    result: "",
   });
 
   function handleChange(event) {
@@ -18,9 +28,7 @@ export default function QueryData() {
           ...prevFormData,
         };
     });
-    console.log(formData.args);
   }
-  const [apiResponse, setApiResponse] = React.useState({});
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,7 +39,7 @@ export default function QueryData() {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       });
       fetch(
-        `http://34.165.211.237:4000/channels/mychannel/chaincodes/electricLadger?args=["${formData.args}"]&peer=peer0.org1.example.com&fcn=queryData`,
+        `http://192.168.0.103:4000/channels/mychannel/chaincodes/electricLadger?args=["${formData.args}"]&peer=peer0.org1.example.com&fcn=queryData&history=false`,
         {
           method: "GET",
           headers: headers,
@@ -48,24 +56,81 @@ export default function QueryData() {
           }
         })
         .then((data) => {
-          // use the data here
-          setApiResponse(() => {
+          // console.log(data);
+          setApiResponse((prevData) => {
             return {
+              ...prevData,
               ...data,
             };
           });
-          console.log(apiResponse);
         })
         .catch((error) => {
           throw error;
         });
     } catch (error) {
-      console.log(error);
+      setShowErrorAlert(() => {
+        return {
+          error: true,
+          ...error,
+        };
+      });
     }
   }
+  const dangerAlert = () => {
+    setShowErrorAlert(false);
+  };
+
+  useEffect(() => {
+    async function checkEmpty() {
+      await new Promise((resolve) => setTimeout(resolve, 10));
+      console.log(apiResponse);
+      if (apiResponse.result && apiResponse.result.length === 0) {
+        setShowErrorAlert((prevData) => {
+          return {
+            ...prevData,
+            message: "not Found Please enter Valid User id",
+            error: true,
+          };
+        });
+      }
+    }
+
+    checkEmpty();
+  }, [apiResponse]);
+
+  // function checkEmpty() {
+  //   console.log(apiResponse);
+  //   if (apiResponse.result && apiResponse.result.length === 0) {
+  //     setShowErrorAlert((prevData) => {
+  //       return {
+  //         ...prevData,
+  //         message: "not Found Please enter Valid User id",
+  //         error: true,
+  //       };
+  //     });
+  //   }
+  // }
+
+  useEffect(() => {
+    setShowErrorAlert(false);
+  }, [formData]);
 
   return (
     <>
+      {showErrorAlert.error && (
+        <Alert
+          className="mt-5"
+          variant="danger"
+          onClose={dangerAlert}
+          dismissible
+        >
+          <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+          <p>
+            The Given {formData.args} {showErrorAlert.message}
+          </p>
+        </Alert>
+      )}
+
       <form onSubmit={handleSubmit}>
         <br />
         <label htmlFor="uid">Please enter your user id here</label>
