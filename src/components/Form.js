@@ -27,7 +27,7 @@ export default function MyForm(props) {
   function handleSubmit(event) {
     event.preventDefault();
     try {
-      fetch(`http://192.168.0.103:4000/${props.address}`, {
+      fetch(`http://34.165.211.237:4000/${props.address}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
@@ -43,6 +43,7 @@ export default function MyForm(props) {
           if (props.type === "login") {
             if (response.success) {
               localStorage.setItem("jwt", response.token);
+
               dangerAlert();
               navigate("/dashboard");
             } else {
