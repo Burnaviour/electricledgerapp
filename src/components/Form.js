@@ -1,19 +1,13 @@
 import React from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DangerAlert from "./Alert";
 
 export default function MyForm(props) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
   const [showAlert, setShowAlert] = React.useState(false);
   const [showSuccessAlert, setShowSuccessAlert] = React.useState(false);
-
-  React.useEffect(() => {
-    setShowSuccessAlert(false);
-  }, []); // The empty array ensures that this effect only runs on mount
-
-  const [apiResponse, setApiResponse] = React.useState({
-    success: true,
-  });
+  const [apiResponse, setApiResponse] = React.useState({});
 
   const [formData, setFormData] = React.useState({
     username: "",
@@ -33,39 +27,82 @@ export default function MyForm(props) {
   function handleSubmit(event) {
     event.preventDefault();
     try {
-      fetch(`http://34.165.211.237:4000/${props.address}`, {
+      fetch(`http://192.168.0.103:4000/${props.address}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
         .then((res) => res.json())
         .then((response) => {
-          setApiResponse(response);
+          setApiResponse(() => {
+            return {
+              ...response,
+            };
+          });
 
-          if (response.success) {
-            localStorage.setItem("jwt", response.token);
-            alert(`Register User in Wallet :${formData.username}`);
-            setShowSuccessAlert(true);
-          } else {
-            setShowAlert(true);
+          if (props.type === "login") {
+            if (response.success) {
+              localStorage.setItem("jwt", response.token);
+              dangerAlert();
+              navigate("/dashboard");
+            } else {
+              setShowAlert(true);
+            }
+          }
+          if (props.type === "register") {
+            if (response.success) {
+              localStorage.setItem("jwt", response.token);
+              dangerAlert();
+              setShowSuccessAlert(true);
+            } else {
+              successAlert();
+              setShowAlert(true);
+            }
           }
         });
     } catch (error) {
       console.log(error);
     }
   }
-  const alert = () => {
+  const dangerAlert = () => {
     setShowAlert(false);
+  };
+  const successAlert = () => {
     setShowSuccessAlert(false);
   };
 
+  React.useEffect(() => {
+    setShowSuccessAlert(false);
+    setShowAlert(false);
+  }, []);
   return (
     <>
-      {showAlert && (
-        <DangerAlert alert={alert} type="danger" msg={apiResponse.message} />
+      {props.type === "login" && showAlert && (
+        <DangerAlert
+          formType={props.type}
+          dangerAlert={dangerAlert}
+          type="danger"
+          res={apiResponse}
+        />
       )}
-      {showSuccessAlert && (
-        <DangerAlert alert={alert} type="success" msg={apiResponse.message} />
+
+      {/* show danger alert in register form */}
+      {props.type === "register" && showAlert && (
+        <DangerAlert
+          formType={props.type}
+          dangerAlert={dangerAlert}
+          type="danger"
+          res={apiResponse}
+        />
+      )}
+      {/* show success alert in register form */}
+      {props.type === "register" && showSuccessAlert && (
+        <DangerAlert
+          formType={props.type}
+          successAlert={successAlert}
+          res={apiResponse}
+          type="success"
+        />
       )}
       <form onSubmit={handleSubmit}>
         <br />
