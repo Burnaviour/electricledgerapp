@@ -60,7 +60,7 @@ export default function QueryData() {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       });
       fetch(
-        `http://192.168.0.103:4000/channels/mychannel/chaincodes/electricLadger?args=["${
+        `http://34.165.211.237:4000/channels/mychannel/chaincodes/electricLadger?args=["${
           formData.args
         }"]&peer=peer0.org1.example.com&fcn=queryData&history=${
           IsHistory ? "true" : "false"
@@ -188,11 +188,10 @@ export default function QueryData() {
           <option value="none">--Select--</option>
           <option value="Org1">Org1</option>
         </select> */}
-
         <br />
         <br />
         <Switch onClick={toggleHistory} />
-
+        <br /> <br />
         <button>Submit</button>
       </form>
 
