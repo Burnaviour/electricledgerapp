@@ -6,8 +6,8 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Dashboard from "./components/Dashboard";
-
+import QueryBill from "./components/QueryBill";
+import NotFoundPage from "./components/NotFoundPage";
 function App() {
   return (
     <BrowserRouter>
@@ -15,11 +15,12 @@ function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/AboutUs" element={<About />} />
+          <Route path="/about-us" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact-us" element={<Contact />} />
-          <Route path="/AdminLogin" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/admin-Login" element={<Login />} />
+          <Route path="/query-bill" element={<QueryBill />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

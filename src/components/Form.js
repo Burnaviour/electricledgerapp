@@ -23,48 +23,90 @@ export default function MyForm(props) {
       };
     });
   }
-
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
+    console.log(formData);
+    console.log("handleSubmit");
     event.preventDefault();
     try {
-      fetch(`http://192.168.0.103:4000/${props.address}`, {
+      //let ip="34.165.211.237";
+
+      const res = await fetch(`http://192.168.0.103:4000/${props.address}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-      })
-        .then((res) => res.json())
-        .then((response) => {
-          setApiResponse(() => {
-            return {
-              ...response,
-            };
-          });
+      });
+      const response = await res.json();
+      setApiResponse(() => {
+        return {
+          ...response,
+        };
+      });
 
-          if (props.type === "login") {
-            if (response.success) {
-              localStorage.setItem("jwt", response.token);
-
-              dangerAlert();
-              navigate("/dashboard");
-            } else {
-              setShowAlert(true);
-            }
-          }
-          if (props.type === "register") {
-            if (response.success) {
-              localStorage.setItem("jwt", response.token);
-              dangerAlert();
-              setShowSuccessAlert(true);
-            } else {
-              successAlert();
-              setShowAlert(true);
-            }
-          }
-        });
+      if (props.type === "login") {
+        if (response.success) {
+          localStorage.setItem("jwt", response.token);
+          dangerAlert();
+          navigate("/query-bill");
+        } else {
+          setShowAlert(true);
+        }
+      }
+      if (props.type === "register") {
+        if (response.success) {
+          localStorage.setItem("jwt", response.token);
+          dangerAlert();
+          // setShowSuccessAlert(true);
+        } else {
+          successAlert();
+          // setShowAlert(true);
+        }
+      }
     } catch (error) {
       console.log(error);
     }
   }
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  //   try {
+  //     fetch(`http://34.165.211.237:4000/${props.address}`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(formData),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((response) => {
+  //         setApiResponse(() => {
+  //           return {
+  //             ...response,
+  //           };
+  //         });
+
+  //         if (props.type === "login") {
+  //           if (response.success) {
+  //             localStorage.setItem("jwt", response.token);
+
+  //             dangerAlert();
+  //             navigate("/dashboard");
+  //           } else {
+  //             setShowAlert(true);
+  //           }
+  //         }
+  //         if (props.type === "register") {
+  //           if (response.success) {
+  //             localStorage.setItem("jwt", response.token);
+  //             dangerAlert();
+  //             setShowSuccessAlert(true);
+  //           } else {
+  //             successAlert();
+  //             setShowAlert(true);
+  //           }
+  //         }
+  //       });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
   const dangerAlert = () => {
     setShowAlert(false);
   };
@@ -76,6 +118,21 @@ export default function MyForm(props) {
     setShowSuccessAlert(false);
     setShowAlert(false);
   }, []);
+
+  React.useEffect(() => {
+    async function handleSubmitEffect() {
+      if (apiResponse.success) {
+        setShowSuccessAlert(true);
+      } else {
+        if (apiResponse.success === false) {
+          setShowAlert(true);
+        }
+      }
+    }
+
+    handleSubmitEffect();
+  }, [apiResponse]);
+
   return (
     <>
       {props.type === "login" && showAlert && (
@@ -97,6 +154,7 @@ export default function MyForm(props) {
         />
       )}
       {/* show success alert in register form */}
+
       {props.type === "register" && showSuccessAlert && (
         <DangerAlert
           formType={props.type}

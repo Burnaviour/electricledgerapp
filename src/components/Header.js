@@ -10,7 +10,7 @@ export default function Header() {
           Home
         </Link>
 
-        <Link className="header-link" to="/AboutUs">
+        <Link className="header-link" to="/about-us">
           About us
         </Link>
 
@@ -20,7 +20,7 @@ export default function Header() {
         <Link className="header-link" to="/register">
           Register
         </Link>
-        <Link className="header-link" to="/AdminLogin">
+        <Link className="header-link" to="/admin-Login">
           Organization Login
         </Link>
       </header>

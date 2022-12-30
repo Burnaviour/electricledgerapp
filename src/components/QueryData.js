@@ -1,20 +1,30 @@
 import Alert from "react-bootstrap/Alert";
 import React, { useEffect } from "react";
+import DataDiv from "./Data";
+import { Switch } from "antd";
 // import { useNavigate } from "react-router-dom";
 
 export default function QueryData() {
+  const [IsHistory, setHistory] = React.useState(false);
   const [formData, setFormData] = React.useState({
-    args: " ",
+    args: "",
   });
   const [showErrorAlert, setShowErrorAlert] = React.useState({
     message: "",
     error: false,
+    check: false,
   });
   const [apiResponse, setApiResponse] = React.useState({
     error: null,
     errorData: null,
     result: "",
+    success: false,
   });
+
+  function toggleHistory() {
+    setHistory((prevMode) => !prevMode);
+    console.log(IsHistory);
+  }
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -32,14 +42,29 @@ export default function QueryData() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    if (formData.args.length === 0) {
+      setShowErrorAlert((prevData) => {
+        return {
+          ...prevData,
+          message: "Please enter User id",
+          error: true,
+          check: true,
+        };
+      });
+      return;
+    }
     try {
-      console.log(formData);
+      // console.log(formData);
       const headers = new Headers({
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       });
       fetch(
-        `http://192.168.0.103:4000/channels/mychannel/chaincodes/electricLadger?args=["${formData.args}"]&peer=peer0.org1.example.com&fcn=queryData&history=false`,
+        `http://192.168.0.103:4000/channels/mychannel/chaincodes/electricLadger?args=["${
+          formData.args
+        }"]&peer=peer0.org1.example.com&fcn=queryData&history=${
+          IsHistory ? "true" : "false"
+        }`,
         {
           method: "GET",
           headers: headers,
@@ -56,11 +81,12 @@ export default function QueryData() {
           }
         })
         .then((data) => {
-          // console.log(data);
+          console.log(data);
           setApiResponse((prevData) => {
             return {
               ...prevData,
               ...data,
+              success: true,
             };
           });
         })
@@ -83,7 +109,7 @@ export default function QueryData() {
   useEffect(() => {
     async function checkEmpty() {
       await new Promise((resolve) => setTimeout(resolve, 10));
-      console.log(apiResponse);
+      // console.log(apiResponse);
       if (apiResponse.result && apiResponse.result.length === 0) {
         setShowErrorAlert((prevData) => {
           return {
@@ -112,9 +138,15 @@ export default function QueryData() {
   // }
 
   useEffect(() => {
-    setShowErrorAlert(false);
-  }, [formData]);
+    setShowErrorAlert((prevData) => {
+      return {
+        ...prevData,
+        error: false,
 
+        check: false,
+      };
+    });
+  }, [formData]);
   return (
     <>
       {showErrorAlert.error && (
@@ -126,7 +158,9 @@ export default function QueryData() {
         >
           <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
           <p>
-            The Given {formData.args} {showErrorAlert.message}
+            {showErrorAlert.check
+              ? showErrorAlert.message
+              : `The Given ${formData.args} ${showErrorAlert.message}`}
           </p>
         </Alert>
       )}
@@ -154,11 +188,15 @@ export default function QueryData() {
           <option value="none">--Select--</option>
           <option value="Org1">Org1</option>
         </select> */}
+
         <br />
         <br />
+        <Switch onClick={toggleHistory} />
 
         <button>Submit</button>
       </form>
+
+      {apiResponse.success && <DataDiv data={apiResponse} />}
     </>
   );
 }
