@@ -6,26 +6,34 @@ export default function Header() {
   return (
     <>
       <header>
-        <Link className="header-link" to="/">
+        <nav className="nav--design">
+        
+        <h3 className = "logo--fonts">ELectric Ledger</h3>
+        
+        
+        <div className="set--left">
+        <Link className="header-link hover-underline-animation"  to="/">
           Home
         </Link>
 
-        <Link className="header-link" to="/about-us">
+        <Link className="header-link  hover-underline-animation" to="/about-us">
           About us
         </Link>
 
-        <Link className="header-link" to="/contact-us">
+        <Link className="header-link hover-underline-animation" to="/contact-us">
           Contact
         </Link>
-        <Link className="header-link" to="/login">
+        <Link className="header-link hover-underline-animation" to="/login">
           Login
         </Link>
-        <Link className="header-link" to="/register">
+        <Link className="header-link hover-underline-animation" to="/register">
           Register
         </Link>
-        <Link className="header-link" to="/admin-Login">
+        <Link className="header-link header-link  hover-underline-animation" to="/admin-Login">
           Organization Login
         </Link>
+        </div>
+        </nav>
       </header>
       <Outlet />
     </>
