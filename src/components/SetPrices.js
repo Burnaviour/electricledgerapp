@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
-
-export default function UnitPrice() {
+import React from "react";
+import UnitPrice from "./UnitPrices";
+export default function SetPrices() {
   return (
     <>
-      <h1>Set prices</h1>
+      <h1>Set Pricing for Monthhly Bill</h1>
+      <UnitPrice />
     </>
   );
 }

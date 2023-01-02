@@ -131,6 +131,7 @@ export default function MyForm(props) {
     }
 
     handleSubmitEffect();
+    console.log(apiResponse);
   }, [apiResponse]);
 
   return (

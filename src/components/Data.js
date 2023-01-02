@@ -3,12 +3,33 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 export default function DataDiv(props) {
+  const [arr, setArr] = useState([]);
   const [data, setData] = useState([]);
-  let resultHistory;
+  const [currentUsage, setCurrentusage] = useState(0);
+
   useEffect(() => {
     setData(props.data);
-    console.log("DataDiv useEffect props.data: ", data);
-  }, [props.data, data]);
+    // console.log("DataDiv useEffect props.data: ", data);
+  }, [props.data]);
+
+  useEffect(() => {
+    if (data.Ishistory) {
+      setArr(data.history.map((item) => item.Value.units));
+      console.log(arr.length % 30);
+      function getCurrentUage() {
+        let index = arr.length % 30;
+        let currentUsage = 0;
+        for (let i = 0; i < index; i++) {
+          currentUsage += arr[i];
+        }
+        return currentUsage;
+      }
+      setCurrentusage(getCurrentUage());
+    }
+  }, [data]);
+
+  let resultHistory;
+
   let Result =
     data.success &&
     data.result.map((result) => (

@@ -20,25 +20,7 @@ export default function QueryData() {
     result: "",
     success: false,
   });
-
-  function toggleHistory() {
-    setHistory((prevMode) => !prevMode);
-    console.log(IsHistory);
-  }
-
-  function handleChange(event) {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => {
-      if (name === "args") {
-        return {
-          args: value.trim(),
-        };
-      } else
-        return {
-          ...prevFormData,
-        };
-    });
-  }
+  const [prevSuccess, setPrevSuccess] = React.useState(apiResponse.success);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -81,7 +63,7 @@ export default function QueryData() {
           }
         })
         .then((data) => {
-          console.log(data);
+          console.log("api call data", data);
           setApiResponse((prevData) => {
             return {
               ...prevData,
@@ -102,6 +84,29 @@ export default function QueryData() {
       });
     }
   }
+  function toggleHistory() {
+    setHistory((prevMode) => !prevMode);
+  }
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => {
+      if (name === "args") {
+        return {
+          args: value.trim(),
+        };
+      } else
+        return {
+          ...prevFormData,
+        };
+    });
+  }
+
+  useEffect(() => {
+    if (prevSuccess !== apiResponse.success) {
+      setPrevSuccess(apiResponse.success);
+    }
+  }, [apiResponse.success, prevSuccess]);
   const dangerAlert = () => {
     setShowErrorAlert(false);
   };
@@ -109,6 +114,7 @@ export default function QueryData() {
   useEffect(() => {
     async function checkEmpty() {
       await new Promise((resolve) => setTimeout(resolve, 10));
+
       if (apiResponse.result && apiResponse.result.length === 0) {
         setShowErrorAlert((prevData) => {
           return {
@@ -130,21 +136,8 @@ export default function QueryData() {
     }
 
     checkEmpty();
-    console.log(apiResponse);
+    // console.log(apiResponse);
   }, [apiResponse]);
-
-  // function checkEmpty() {
-  //   console.log(apiResponse);
-  //   if (apiResponse.result && apiResponse.result.length === 0) {
-  //     setShowErrorAlert((prevData) => {
-  //       return {
-  //         ...prevData,
-  //         message: "not Found Please enter Valid User id",
-  //         error: true,
-  //       };
-  //     });
-  //   }
-  // }
 
   useEffect(() => {
     setShowErrorAlert((prevData) => {
@@ -185,18 +178,6 @@ export default function QueryData() {
           name="args"
           value={formData.args}
         />
-        {/* <br />
-        <label htmlFor="orgName">which organiation?</label>
-        <br />
-        <select
-          id="orgName"
-          value={formData.orgName}
-          onChange={handleChange}
-          name="orgName"
-        >
-          <option value="none">--Select--</option>
-          <option value="Org1">Org1</option>
-        </select> */}
         <br />
         <br />
         <Switch onClick={toggleHistory} />

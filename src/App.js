@@ -9,6 +9,7 @@ import Contact from "./components/Contact";
 import QueryBill from "./components/QueryBill";
 import NotFoundPage from "./components/NotFoundPage";
 import Dashboard from "./components/Dashboard";
+import SetPrices from "./components/SetPrices.js";
 function App() {
   return (
     <BrowserRouter>
@@ -21,7 +22,8 @@ function App() {
           <Route path="/contact-us" element={<Contact />} />
           <Route path="/admin-Login" element={<Login />} />
           <Route path="/query-bill" element={<QueryBill />} />
-          <Route path="/uniPrices" element={<Dashboard />} />
+          <Route path="/set-prices" element={<SetPrices />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
