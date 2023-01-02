@@ -109,7 +109,6 @@ export default function QueryData() {
   useEffect(() => {
     async function checkEmpty() {
       await new Promise((resolve) => setTimeout(resolve, 10));
-      // console.log(apiResponse);
       if (apiResponse.result && apiResponse.result.length === 0) {
         setShowErrorAlert((prevData) => {
           return {
@@ -118,10 +117,20 @@ export default function QueryData() {
             error: true,
           };
         });
+        setApiResponse((prevData) => {
+          return {
+            ...prevData,
+            error: null,
+            errorData: null,
+            result: "",
+            success: false,
+          };
+        });
       }
     }
 
     checkEmpty();
+    console.log(apiResponse);
   }, [apiResponse]);
 
   // function checkEmpty() {
