@@ -17,6 +17,9 @@ export default function Header() {
         <Link className="header-link" to="/contact-us">
           Contact
         </Link>
+        <Link className="header-link" to="/login">
+          Login
+        </Link>
         <Link className="header-link" to="/register">
           Register
         </Link>
