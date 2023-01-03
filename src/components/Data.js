@@ -4,12 +4,11 @@ import { useEffect } from "react";
 
 export default function DataDiv(props) {
   const [arr, setArr] = useState([]);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(props.data);
   const [currentUsage, setCurrentusage] = useState(0);
 
   useEffect(() => {
     setData(props.data);
-    // console.log("DataDiv useEffect props.data: ", data);
   }, [props.data]);
 
   useEffect(() => {
@@ -25,6 +24,7 @@ export default function DataDiv(props) {
         return currentUsage;
       }
       setCurrentusage(getCurrentUage());
+      console.log(currentUsage);
     }
   }, [data]);
 

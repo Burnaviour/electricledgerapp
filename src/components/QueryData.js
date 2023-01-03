@@ -13,6 +13,7 @@ export default function QueryData() {
     message: "",
     error: false,
     check: false,
+    //check  for custom message in red alert
   });
   const [apiResponse, setApiResponse] = React.useState({
     error: null,
@@ -31,6 +32,12 @@ export default function QueryData() {
           message: "Please enter User id",
           error: true,
           check: true,
+        };
+      });
+      setApiResponse((prevData) => {
+        return {
+          ...prevData,
+          success: false,
         };
       });
       return;
@@ -73,7 +80,16 @@ export default function QueryData() {
           });
         })
         .catch((error) => {
-          throw error;
+          if (error.status === 401) {
+            setShowErrorAlert((prevData) => {
+              return {
+                ...prevData,
+                message: "Session Expired Please Login First",
+                error: true,
+                check: true,
+              };
+            });
+          }
         });
     } catch (error) {
       setShowErrorAlert(() => {
@@ -107,6 +123,7 @@ export default function QueryData() {
       setPrevSuccess(apiResponse.success);
     }
   }, [apiResponse.success, prevSuccess]);
+
   const dangerAlert = () => {
     setShowErrorAlert(false);
   };
@@ -180,7 +197,8 @@ export default function QueryData() {
         />
         <br />
         <br />
-        <Switch onClick={toggleHistory} />
+        <label htmlFor="switch">History</label>
+        <Switch id="switch" onClick={toggleHistory} />
         <br /> <br />
         <button>Submit</button>
       </form>
