@@ -1,4 +1,5 @@
 import Alert from "react-bootstrap/Alert";
+import Button from "react-bootstrap/Button";
 import React, { useEffect } from "react";
 import DataDiv from "./Data";
 import { Switch } from "antd";
@@ -6,6 +7,7 @@ import { Switch } from "antd";
 
 export default function QueryData() {
   const [IsHistory, setHistory] = React.useState(false);
+  const [isLoading, setLoading] = React.useState(false);
   const [formData, setFormData] = React.useState({
     args: "",
   });
@@ -104,6 +106,17 @@ export default function QueryData() {
     setHistory((prevMode) => !prevMode);
   }
 
+  function handleClick(event) {
+    if (event.target.type === "submit") {
+      handleSubmit(event);
+    }
+    setLoading(true);
+
+    // simulate a delay
+    setTimeout(function () {
+      setLoading(false);
+    }, 1000);
+  }
   function handleChange(event) {
     const { name, value } = event.target;
     setFormData((prevFormData) => {
@@ -200,7 +213,14 @@ export default function QueryData() {
         <label htmlFor="switch">History</label>
         <Switch id="switch" onClick={toggleHistory} />
         <br /> <br />
-        <button>Submit</button>
+        <Button
+          variant="primary"
+          type="submit"
+          disabled={isLoading}
+          onClick={!isLoading ? handleClick : null}
+        >
+          {isLoading ? "Loading…" : "Submit"}
+        </Button>
       </form>
 
       {apiResponse.success && <DataDiv data={apiResponse} />}

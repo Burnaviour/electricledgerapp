@@ -40,6 +40,10 @@ body {
   text-decoration: none;
   font-size: 1rem;
 }
+.History-div {
+  height: 200px;
+  overflow-y: scroll; /* only add a vertical scrollbar */
+}
 .custom-link:hover {
   color: rgb(4, 123, 30);
 }
