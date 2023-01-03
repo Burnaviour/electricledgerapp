@@ -77,6 +77,10 @@ export default function UnitPrice(props) {
     } else {
       if (apiResponse.success === false) {
         setShowAlert(true);
+        setError({
+          message: apiResponse.message,
+          error: true,
+        });
       }
     }
   }, [apiResponse]);
