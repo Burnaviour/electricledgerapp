@@ -2,7 +2,7 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -10,11 +10,12 @@ import QueryBill from "./components/QueryBill";
 import NotFoundPage from "./components/NotFoundPage";
 import Dashboard from "./components/Dashboard";
 import SetPrices from "./components/SetPrices.js";
+import Navbar from "./components/Navbar/index";
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Header />}>
+        <Route path="/" element={<Navbar />}>
           <Route index element={<Home />} />
           <Route path="/register" element={<Register />} />
           <Route path="/about-us" element={<About />} />
