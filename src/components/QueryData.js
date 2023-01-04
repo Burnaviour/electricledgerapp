@@ -111,12 +111,12 @@ export default function QueryData() {
       handleSubmit(event);
     }
     setLoading(true);
-
     // simulate a delay
     setTimeout(function () {
       setLoading(false);
     }, 1000);
   }
+
   function handleChange(event) {
     const { name, value } = event.target;
     setFormData((prevFormData) => {
@@ -199,7 +199,7 @@ export default function QueryData() {
 
       <form onSubmit={handleSubmit}>
         <br />
-        <label htmlFor="uid">Please enter your user id here</label>
+        <label htmlFor="uid">Please enter your user id here</label> <br />
         <input
           id="uid"
           type="text"
@@ -222,6 +222,8 @@ export default function QueryData() {
           {isLoading ? "Loading…" : "Submit"}
         </Button>
       </form>
+      <br />
+      <br />
 
       {apiResponse.success && <DataDiv data={apiResponse} />}
     </>
