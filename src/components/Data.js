@@ -1,16 +1,17 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect, createContext } from "react";
-import Button from "react-bootstrap/Button";
+// import Button from "react-bootstrap/Button";
 
-const ArrContext = createContext();
 let resultHistory;
 let Result;
+
+export const UserContext = createContext();
 
 export default function DataDiv(props) {
   // const [arr, setArr] = useState([]);
   const [data, setData] = useState(props.data);
-  const [isLoadingbtn, setLoadingbtn] = React.useState(false);
+  // const [isLoadingbtn, setLoadingbtn] = React.useState(false);
 
   const [currentUsage, setCurrentusage] = useState(0);
 
@@ -18,14 +19,14 @@ export default function DataDiv(props) {
     setData(props.data);
   }, [props.data]);
 
-  function handleClick2(event) {
-    console.log("btn 2");
-    setLoadingbtn(true);
-    // simulate a delay
-    setTimeout(function () {
-      setLoadingbtn(false);
-    }, 1000);
-  }
+  // function handleClick2(event) {
+  //   console.log("btn 2");
+  //   setLoadingbtn(true);
+  //   // simulate a delay
+  //   setTimeout(function () {
+  //     setLoadingbtn(false);
+  //   }, 1000);
+  // }
 
   useEffect(() => {
     console.count("useEffect");
@@ -56,15 +57,14 @@ export default function DataDiv(props) {
   return (
     <>
       <div>
-        <ArrContext.Provider value={currentUsage} />;
-        <Button
+        {/* <Button
           variant="success"
           type="button"
           disabled={isLoadingbtn}
           onClick={!isLoadingbtn ? handleClick2 : null}
         >
           {isLoadingbtn ? "Loading…" : "Generate Bill"}
-        </Button>
+        </Button> */}
         {data.success && (
           <div>
             <h1>World State Data</h1>

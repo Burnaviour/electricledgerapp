@@ -10,6 +10,8 @@ import QueryBill from "./components/QueryBill";
 import NotFoundPage from "./components/NotFoundPage";
 import Dashboard from "./components/Dashboard";
 import SetPrices from "./components/SetPrices.js";
+import UserDashboard from "./components/UserDashboard";
+import GenerateBill from "./components/GenerateBill";
 function App() {
   return (
     <BrowserRouter>
@@ -24,6 +26,8 @@ function App() {
           <Route path="/query-bill" element={<QueryBill />} />
           <Route path="/set-prices" element={<SetPrices />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/generate-bill" element={<GenerateBill />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

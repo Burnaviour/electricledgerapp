@@ -3,11 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@react-18-pdf/renderer": "^2.3.4",
+    "@react-pdf/renderer": "^3.0.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.1.2",
     "bootstrap": "^5.2.3",
+    "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
@@ -20,6 +23,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "overrides": {
+    "@react-pdf/renderer": {
+      "react": "^18.0.0"
+    }
   },
   "eslintConfig": {
     "extends": [

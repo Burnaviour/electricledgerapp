@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import React, { useEffect } from "react";
 import DataDiv from "./Data";
 import { Switch } from "antd";
+
 // import { useNavigate } from "react-router-dom";
 
 export default function QueryData() {
@@ -51,7 +52,7 @@ export default function QueryData() {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       });
       fetch(
-        `http://34.165.211.237:4000/channels/mychannel/chaincodes/electricLadger?args=["${
+        `http://192.168.0.105:4000/channels/mychannel/chaincodes/electricLadger?args=["${
           formData.args
         }"]&peer=peer0.org1.example.com&fcn=queryData&history=${
           IsHistory ? "true" : "false"
