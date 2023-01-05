@@ -48,7 +48,7 @@ const GenerateMyBill = () => {
     });
     try {
       const response = await fetch(
-        `http://192.168.0.101:4000/channels/mychannel/chaincodes/electricLadger/getbill?peer=peer0.org1.example.com&fcn=queryData&args=["${uid}"]&history=true`,
+        `http://34.165.211.237:4000/channels/mychannel/chaincodes/electricLadger/getbill?peer=peer0.org1.example.com&fcn=queryData&args=["${uid}"]&history=true`,
         {
           method: "GET",
           headers: headers,
@@ -227,6 +227,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     textAlign: "center",
     marginBottom: 20,
+    fontFamily: "Times-Roman",
   },
   table: {
     display: "flex",

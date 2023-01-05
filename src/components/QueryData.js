@@ -52,7 +52,7 @@ export default function QueryData() {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       });
       fetch(
-        `http://192.168.0.105:4000/channels/mychannel/chaincodes/electricLadger?args=["${
+        `http://34.165.211.237:4000/channels/mychannel/chaincodes/electricLadger?args=["${
           formData.args
         }"]&peer=peer0.org1.example.com&fcn=queryData&history=${
           IsHistory ? "true" : "false"
