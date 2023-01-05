@@ -73,7 +73,7 @@ export default function UnitPrice(props) {
   useEffect(() => {
     if (apiResponse.success) {
       setShowSuccessAlert(true);
-      console.log(apiResponse);
+      // console.log(apiResponse);
     } else {
       if (apiResponse.success === false) {
         setShowAlert(true);
