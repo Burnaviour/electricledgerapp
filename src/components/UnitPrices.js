@@ -35,7 +35,7 @@ export default function UnitPrice(props) {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       });
       const res = await fetch(
-        `http://34.165.211.237:4000/channels/mychannel/chaincodes/electricLadger${props.address}`,
+        `http://${props.ip}:4000/channels/mychannel/chaincodes/electricLadger${props.address}`,
         {
           method: "POST",
           headers: headers,

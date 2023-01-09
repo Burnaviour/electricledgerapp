@@ -14,6 +14,7 @@ import UserDashboard from "./components/UserDashboard";
 import GenerateBill from "./components/GenerateBill";
 import AddUser from "./components/AddUser";
 function App() {
+  let ip = process.env.REACT_APP_IP;
   return (
     <BrowserRouter>
       <Routes>
@@ -28,7 +29,7 @@ function App() {
           <Route path="/set-prices" element={<SetPrices />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/user-dashboard" element={<UserDashboard />} />
-          <Route path="/generate-bill" element={<GenerateBill />} />
+          <Route path="/generate-bill" element={<GenerateBill ip={ip} />} />
           <Route path="/add-user" element={<AddUser />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>

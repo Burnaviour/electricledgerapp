@@ -57,7 +57,7 @@ function UnitPrice() {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       });
       const res = await fetch(
-        `http://34.165.211.237:4000/channels/mychannel/chaincodes/electricLadger/invoke`,
+        `http://${process.env.REACT_APP_IP}:4000/channels/mychannel/chaincodes/electricLadger/invoke`,
         // `http://192.168.0.101:4000/channels/mychannel/chaincodes/electricLadger/invoke`,
         {
           method: "POST",

@@ -14,17 +14,17 @@ import {
   PDFViewer,
 } from "@react-pdf/renderer";
 
-export default function GenerateBill() {
+export default function GenerateBill(props) {
   return (
     <>
       <h1>Generate Bill</h1>
       <h1>Organization ElectricLadger</h1>
-      <GenerateMyBill />
+      <GenerateMyBill ip={props.ip} />
     </>
   );
 }
 
-const GenerateMyBill = () => {
+const GenerateMyBill = (props) => {
   const [uid, setUid] = useState("");
   const [data, setData] = useState({ success: false });
   const [showErrorAlert, setShowErrorAlert] = useState({ error: false });
@@ -48,7 +48,7 @@ const GenerateMyBill = () => {
     });
     try {
       const response = await fetch(
-        `http://34.165.211.237:4000/channels/mychannel/chaincodes/electricLadger/getbill?peer=peer0.org1.example.com&fcn=queryData&args=["${uid}"]&history=true`,
+        `http://${props.ip}:4000/channels/mychannel/chaincodes/electricLadger/getbill?peer=peer0.org1.example.com&fcn=queryData&args=["${uid}"]&history=true`,
         {
           method: "GET",
           headers: headers,
@@ -228,6 +228,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: 20,
     fontFamily: "Times-Roman",
+    color: "grey",
   },
   table: {
     display: "flex",
