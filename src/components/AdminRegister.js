@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import DangerAlert from "./Alert";
 
-export default function MyForm(props) {
+export default function AdminForm(props) {
   const navigate = useNavigate();
 
   const [showAlert, setShowAlert] = React.useState(false);
@@ -12,9 +12,6 @@ export default function MyForm(props) {
   const [formData, setFormData] = React.useState({
     username: "",
     orgName: "",
-    cnic: "",
-    type: "user",
-    uid: "",
   });
 
   function handleChange(event) {
@@ -48,13 +45,9 @@ export default function MyForm(props) {
       if (props.type === "login") {
         if (response.success) {
           localStorage.setItem("jwt", response.token);
-          localStorage.setItem("username", response.username);
-          localStorage.setItem("orgName", response.orgName);
           dangerAlert();
 
-          props.user === "admin"
-            ? navigate("/admin-dashboard")
-            : navigate("/user-dashboard");
+          props.user === "admin" && navigate("/admin-dashboard");
         } else {
           setShowAlert(true);
         }
@@ -144,6 +137,7 @@ export default function MyForm(props) {
 
   return (
     <>
+      <h1>Register Organization Memeber </h1>
       {props.type === "login" && showAlert && (
         <DangerAlert
           formType={props.type}
@@ -170,6 +164,7 @@ export default function MyForm(props) {
           successAlert={successAlert}
           res={apiResponse}
           type="success"
+          user={props.user}
         />
       )}
       <form onSubmit={handleSubmit}>
@@ -177,31 +172,15 @@ export default function MyForm(props) {
         <label htmlFor="username">Enter Your Name</label>
         <input
           type="text"
-          placeholder="User Name"
+          id="username"
+          placeholder="User name"
           onChange={handleChange}
           name="username"
           value={formData.username}
         />
         <br />
         <br />
-        <label htmlFor="uid">Enter Uid</label>
-        <input
-          type="text"
-          placeholder="uid"
-          onChange={handleChange}
-          name="uid"
-          value={formData.uid}
-        />
-        <br /> <br />
-        <label htmlFor="cnic">Cnic</label>
-        <input
-          type="text"
-          placeholder="cnic"
-          onChange={handleChange}
-          name="cnic"
-          value={formData.cnic}
-        />
-        <br /> <br />
+
         <label htmlFor="orgName">which organiation?</label>
         <br />
         <select

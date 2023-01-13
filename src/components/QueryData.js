@@ -46,13 +46,15 @@ export default function QueryData() {
       return;
     }
     try {
-      // console.log(formData);
+      console.log(formData);
       const headers = new Headers({
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       });
       fetch(
-        `http://34.165.211.237:4000/channels/mychannel/chaincodes/electricLadger?args=["${
+        `http://${
+          process.env.REACT_APP_IP
+        }:4000/channels/mychannel/chaincodes/electricLadger?args=["${
           formData.args
         }"]&peer=peer0.org1.example.com&fcn=queryData&history=${
           IsHistory ? "true" : "false"

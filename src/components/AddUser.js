@@ -34,6 +34,7 @@ function UnitPrice() {
     name: " ",
     address: " ",
     units: 0,
+    cnic: " ",
   });
   function handleChange(event) {
     const { name, value } = event.target;
@@ -103,6 +104,7 @@ function UnitPrice() {
       name: " ",
       address: " ",
       units: 0,
+      cnic: " ",
     });
   }, []);
 
@@ -160,6 +162,7 @@ function UnitPrice() {
           value={formData.name}
         />
         <br />
+        <br />
         <label htmlFor="address">Address</label>
         <input
           type="text"
@@ -167,6 +170,16 @@ function UnitPrice() {
           onChange={handleChange}
           name="address"
           value={formData.address}
+        />
+        <br />
+        <br />
+        <label htmlFor="cnic">Cnic</label>
+        <input
+          type="text"
+          placeholder="cnic"
+          onChange={handleChange}
+          name="cnic"
+          value={formData.cnic}
         />
         <br />
         <br />

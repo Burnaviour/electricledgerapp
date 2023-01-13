@@ -13,6 +13,7 @@ import SetPrices from "./components/SetPrices.js";
 import UserDashboard from "./components/UserDashboard";
 import GenerateBill from "./components/GenerateBill";
 import AddUser from "./components/AddUser";
+import AdminForm from "./components/AdminRegister";
 function App() {
   let ip = process.env.REACT_APP_IP;
   return (
@@ -21,6 +22,17 @@ function App() {
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />
           <Route path="/register" element={<Register />} />
+          <Route
+            path="/admin-register"
+            element={
+              <AdminForm
+                ip={ip}
+                user="admin"
+                type="register"
+                address="admin/register"
+              />
+            }
+          />
           <Route path="/about-us" element={<About />} />
           <Route path="/login" element={<Login user="user" />} />
           <Route path="/contact-us" element={<Contact />} />

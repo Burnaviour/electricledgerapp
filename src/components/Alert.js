@@ -30,9 +30,16 @@ function DangerAlert(props) {
               ? "successfully registered"
               : "already registered"}
             . Follow the{" "}
-            <Link to="/login " className="custom-link">
-              link to login
-            </Link>
+            {props.user === "admin" ? (
+              <Link to="/admin-login " className="custom-link">
+                link to login
+              </Link>
+            ) : (
+              <Link to="/login " className="custom-link">
+                {" "}
+                link to login
+              </Link>
+            )}
             .
           </p>
         </Alert>
