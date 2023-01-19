@@ -125,6 +125,7 @@ const GenerateMyBill = (props) => {
           UID:
           <input type="text" value={uid} onChange={handleChange} />
         </label>
+        <br /> <br />
         <input type="submit" value="Submit" />
       </form>{" "}
       <br />

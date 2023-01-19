@@ -1,25 +1,26 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import DangerAlert from "./Alert";
-
+import WalletDownload from "./WalletFile";
 export default function AdminForm(props) {
   const navigate = useNavigate();
 
   const [showAlert, setShowAlert] = React.useState(false);
   const [showSuccessAlert, setShowSuccessAlert] = React.useState(false);
   const [apiResponse, setApiResponse] = React.useState({});
-
+  const [walletFile, setWalletFile] = React.useState(null);
+  const [success, setSuccess] = React.useState(false);
   const [formData, setFormData] = React.useState({
     username: "",
     orgName: "",
   });
 
   function handleChange(event) {
-    const { name, value, type, checked } = event.target;
+    const { name, value } = event.target;
     setFormData((prevFormData) => {
       return {
         ...prevFormData,
-        [name]: type === "checkbox" ? checked : value,
+        [name]: value,
       };
     });
   }
@@ -45,9 +46,11 @@ export default function AdminForm(props) {
       if (props.type === "login") {
         if (response.success) {
           localStorage.setItem("jwt", response.token);
+          localStorage.setItem("username", response.username);
           dangerAlert();
 
-          props.user === "admin" && navigate("/admin-dashboard");
+          // props.user === "admin" && navigate("/admin-dashboard");
+          props.user === "admin" && navigate("/verify-user");
         } else {
           setShowAlert(true);
         }
@@ -57,6 +60,7 @@ export default function AdminForm(props) {
           localStorage.setItem("jwt", response.token);
           dangerAlert();
           // setShowSuccessAlert(true);
+          setWalletFile(response.walletFile);
         } else {
           successAlert();
           // setShowAlert(true);
@@ -66,47 +70,6 @@ export default function AdminForm(props) {
       console.log(error);
     }
   }
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  //   try {
-  //     fetch(`http://34.165.211.237:4000/${props.address}`, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(formData),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((response) => {
-  //         setApiResponse(() => {
-  //           return {
-  //             ...response,
-  //           };
-  //         });
-
-  //         if (props.type === "login") {
-  //           if (response.success) {
-  //             localStorage.setItem("jwt", response.token);
-
-  //             dangerAlert();
-  //             navigate("/dashboard");
-  //           } else {
-  //             setShowAlert(true);
-  //           }
-  //         }
-  //         if (props.type === "register") {
-  //           if (response.success) {
-  //             localStorage.setItem("jwt", response.token);
-  //             dangerAlert();
-  //             setShowSuccessAlert(true);
-  //           } else {
-  //             successAlert();
-  //             setShowAlert(true);
-  //           }
-  //         }
-  //       });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
   const dangerAlert = () => {
     setShowAlert(false);
@@ -124,9 +87,11 @@ export default function AdminForm(props) {
     async function handleSubmitEffect() {
       if (apiResponse.success) {
         setShowSuccessAlert(true);
+        setSuccess(apiResponse.success);
       } else {
         if (apiResponse.success === false) {
           setShowAlert(true);
+          setSuccess(false);
         }
       }
     }
@@ -138,6 +103,7 @@ export default function AdminForm(props) {
   return (
     <>
       <h1>Register Organization Memeber </h1>
+
       {props.type === "login" && showAlert && (
         <DangerAlert
           formType={props.type}
@@ -180,7 +146,6 @@ export default function AdminForm(props) {
         />
         <br />
         <br />
-
         <label htmlFor="orgName">which organiation?</label>
         <br />
         <select
@@ -194,7 +159,15 @@ export default function AdminForm(props) {
         </select>
         <br />
         <br />
+
         <button>Submit</button>
+        {success && (
+          <WalletDownload
+            walletFile={walletFile}
+            success={success}
+            username={apiResponse.username}
+          />
+        )}
       </form>
     </>
   );

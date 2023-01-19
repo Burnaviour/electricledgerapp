@@ -9,7 +9,7 @@ export default function Login(props) {
       {props.user === "admin" && (
         <div>
           <h1> Admin Login </h1>
-          <AdminForm type="login" address="users/login" user="admin" ip={ip} />
+          <AdminForm type="login" address="admin/login" user="admin" ip={ip} />
         </div>
       )}
 

@@ -50,11 +50,13 @@ export default function MyForm(props) {
           localStorage.setItem("jwt", response.token);
           localStorage.setItem("username", response.username);
           localStorage.setItem("orgName", response.orgName);
+          localStorage.setItem("prices", JSON.stringify(response.prices));
+
           dangerAlert();
 
-          props.user === "admin"
-            ? navigate("/admin-dashboard")
-            : navigate("/user-dashboard");
+          props.user === "user"
+            ? navigate("/user-dashboard")
+            : navigate("/admin-dashboard");
         } else {
           setShowAlert(true);
         }

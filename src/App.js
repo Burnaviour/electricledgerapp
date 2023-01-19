@@ -14,6 +14,7 @@ import UserDashboard from "./components/UserDashboard";
 import GenerateBill from "./components/GenerateBill";
 import AddUser from "./components/AddUser";
 import AdminForm from "./components/AdminRegister";
+import WalletUpload from "./components/WalletUpload";
 function App() {
   let ip = process.env.REACT_APP_IP;
   return (
@@ -33,17 +34,22 @@ function App() {
               />
             }
           />
-          <Route path="/about-us" element={<About />} />
-          <Route path="/login" element={<Login user="user" />} />
-          <Route path="/contact-us" element={<Contact />} />
-          <Route path="/admin-Login" element={<Login user="admin" />} />
-          <Route path="/query-bill" element={<QueryBill />} />
-          <Route path="/set-prices" element={<SetPrices />} />
-          <Route path="/admin-dashboard" element={<AdminDashboard />} />
-          <Route path="/user-dashboard" element={<UserDashboard />} />
-          <Route path="/generate-bill" element={<GenerateBill ip={ip} />} />
-          <Route path="/add-user" element={<AddUser />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route exact path="/about-us" element={<About />} />
+          <Route exact path="/login" element={<Login user="user" />} />
+          <Route exact path="/contact-us" element={<Contact />} />{" "}
+          <Route exact path="/verify-user" element={<WalletUpload ip={ip} />} />
+          <Route exact path="/admin-Login" element={<Login user="admin" />} />
+          <Route exact path="/query-bill" element={<QueryBill />} />
+          <Route exact path="/set-prices" element={<SetPrices />} />
+          <Route exact path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route exact path="/user-dashboard" element={<UserDashboard />} />
+          <Route
+            exact
+            path="/generate-bill"
+            element={<GenerateBill ip={ip} />}
+          />
+          <Route exact path="/add-user" element={<AddUser />} />
+          <Route exact path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -17,6 +17,10 @@
 body {
   margin: 0;
 }
+.spinner-color {
+  border-color: #16aa5d !important;
+  border-radius: 17px !important;
+}
 
 /*  ____________________________ */
 
