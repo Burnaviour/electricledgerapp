@@ -115,14 +115,16 @@ export default function UnitPrice(props) {
 
       <form onSubmit={handleSubmit}>
         <br />
-        <label htmlFor="unitsPrice">Unit prices </label>
+        <label htmlFor="unitsPrice">Unit prices </label> <br /> <br />
         <input
-          type="text"
+          type="number"
           id="unitsPrice"
-          placeholder="Per unit Price"
+          placeholder="unit Price"
           onChange={handleChange}
           name="unitsPrice"
           value={formData.unitsPrice}
+          min="1"
+          max="100000"
         />
         <br />
         <br />
@@ -130,10 +132,13 @@ export default function UnitPrice(props) {
         <br />
         <input
           id="tax"
+          type="number"
           placeholder="tax"
           value={formData.tax}
           onChange={handleChange}
           name="tax"
+          min="1"
+          max="100000"
         />
         <br />
         <br />
@@ -141,10 +146,13 @@ export default function UnitPrice(props) {
         <br />
         <input
           id="Service"
+          type="number"
           placeholder="Service"
           value={formData.Service}
           onChange={handleChange}
           name="Service"
+          min="1"
+          max="100000"
         />
         <br />
         <br />

@@ -6,13 +6,13 @@ import Spinner from "react-bootstrap/Spinner";
 const WalletUpload = (props) => {
   let navigator = useNavigate();
   const [file, setFile] = useState(null);
-  const [uploaded, setUploaded] = useState(false);
+  // const [uploaded, setUploaded] = useState(false);
   const [error, setError] = useState({
     message: "",
     error: false,
   });
   const [showAlert, setShowAlert] = useState(false);
-  const [res, setRes] = useState({ success: false, message: "" });
+  const [res, setRes] = useState({ success: null, message: "" });
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
@@ -47,10 +47,10 @@ const WalletUpload = (props) => {
       );
 
       if (res.data.success) {
-        setUploaded(true);
         setRes(res.data);
-
         dangerAlert();
+      } else {
+        setRes(res.data);
       }
     } catch (err) {
       setError({
@@ -64,9 +64,16 @@ const WalletUpload = (props) => {
     async function handleSubmitEffect() {
       if (res.success) {
         setShowAlert(true);
-        // setTimeout(() => {
-        //   navigator("/admin-dashboard");
-        // }, 4000);
+        setTimeout(() => {
+          navigator("/admin-dashboard");
+        }, 3000);
+      } else {
+        if (res.success === false) {
+          setError({
+            message: res.message,
+            error: true,
+          });
+        }
       }
     }
 
@@ -102,11 +109,9 @@ const WalletUpload = (props) => {
 
       <h1>Verify Your identity</h1>
       <form onSubmit={handleUpload}>
-        <input type="file" onChange={handleFileChange} />
+        <input type="file" onChange={handleFileChange} /> <br /> <br />
         <button type="submit">Upload</button>
       </form>
-      {error.error && <p>{error.message}</p>}
-      {uploaded && <p>File uploaded successfully!</p>}
     </>
   );
 };
