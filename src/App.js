@@ -15,6 +15,7 @@ import GenerateBill from "./components/GenerateBill";
 import AddUser from "./components/AddUser";
 import AdminForm from "./components/AdminRegister";
 import WalletUpload from "./components/WalletUpload";
+import UpdateUserData from "./components/UpdateUserData";
 function App() {
   let ip = process.env.REACT_APP_IP;
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="/set-prices" element={<SetPrices />} />
           <Route exact path="/admin-dashboard" element={<AdminDashboard />} />
           <Route exact path="/user-dashboard" element={<UserDashboard />} />
+          <Route exact path="/update-user-data" element={<UpdateUserData />} />
           <Route
             exact
             path="/generate-bill"

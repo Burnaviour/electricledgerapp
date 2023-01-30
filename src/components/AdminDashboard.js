@@ -13,10 +13,13 @@ export default function AdminDashboard() {
     if (e.target.id === "btn-3") {
       navigator("/add-user");
     }
+    if (e.target.id === "btn-4") {
+      navigator("/update-user-data");
+    }
   }
   return (
     <>
-      <h1>Organization ElectricLadger</h1>
+      <h1>Organization ElectricLedger</h1>
       <h1>Dashboard</h1>
       <div>
         <h2>Set prices</h2>
@@ -50,6 +53,17 @@ export default function AdminDashboard() {
           onClick={handleClick}
         >
           Add user Data
+        </Button>
+        <br />
+        <h2>Update User Data</h2>
+        <Button
+          id="btn-4"
+          variant="success"
+          className="mx-4 my-4"
+          type="button"
+          onClick={handleClick}
+        >
+          Update User Data
         </Button>
       </div>
     </>

@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
 import { Link } from "react-router-dom";
-export default function AddUser() {
+export default function UpdateUserData() {
   return (
     <>
       <div>
-        <h1> Add User </h1>
+        <h1> Update User Data </h1>
         <Button as={Link} variant="success" to="/admin-dashboard">
           Dashboard
         </Button>
-        {/* <MyForm type="addUser" address="users/addUser" /> */}
+        <br />
         <AdduserData />
       </div>
     </>
@@ -33,7 +33,7 @@ function AdduserData() {
     orgName: "Org1",
     name: " ",
     address: " ",
-    units: 0,
+    uid: " ",
     cnic: " ",
   });
   function handleChange(event) {
@@ -58,7 +58,7 @@ function AdduserData() {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       });
       const res = await fetch(
-        `http://${process.env.REACT_APP_IP}:4000/channels/mychannel/chaincodes/electricLadger/invoke`,
+        `http://${process.env.REACT_APP_IP}:4000/channels/mychannel/chaincodes/electricLadger/invokeuserdata`,
 
         {
           method: "POST",
@@ -103,7 +103,7 @@ function AdduserData() {
       orgName: "Org1",
       name: " ",
       address: " ",
-      units: 0,
+      uid: " ",
       cnic: " ",
     });
   }, []);
@@ -111,7 +111,7 @@ function AdduserData() {
   useEffect(() => {
     if (apiResponse.success) {
       setShowSuccessAlert(true);
-      console.log(apiResponse);
+      console.log("apiResponse", apiResponse);
     } else {
       if (apiResponse.success === false) {
         setShowAlert(true);
@@ -146,12 +146,22 @@ function AdduserData() {
             dismissible
           >
             <Alert.Heading>Success!</Alert.Heading>
-            <p>{apiResponse.result.message}</p>
+            <p>{apiResponse.message}</p>
           </Alert>
         )}
       </div>
 
       <form onSubmit={handleSubmit}>
+        <br />
+        <label htmlFor="uid">User ID</label>
+        <input
+          type="text"
+          placeholder="Enter uid here"
+          onChange={handleChange}
+          name="uid"
+          value={formData.uid}
+        />
+        <br />
         <br />
         <label htmlFor="name">Name</label>
         <input
