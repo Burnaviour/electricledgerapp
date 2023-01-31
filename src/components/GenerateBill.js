@@ -272,7 +272,7 @@ const PDFFile = ({ data }) => {
     <Document>
       <Page style={styles.body}>
         <Text style={styles.headers} fixed>
-          ElectricLadger Pakistan's First Blockchain Based Electricity Bill
+          ElectricLedger Pakistan's First Blockchain Based Electricity Bill
         </Text>
         <Image style={styles.image} src={logo} />
         <Text style={styles.title}>ElectricLedger</Text>
