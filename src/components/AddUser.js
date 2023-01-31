@@ -58,7 +58,7 @@ function AdduserData() {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       });
       const res = await fetch(
-        `http://${process.env.REACT_APP_IP}:4000/channels/mychannel/chaincodes/electricLadger/invoke`,
+        `http://${process.env.REACT_APP_IP}:4000/channels/mychannel/chaincodes/electricledger/invoke`,
 
         {
           method: "POST",
@@ -216,7 +216,7 @@ function AdduserData() {
           name="chaincodeName"
         >
           <option value="none">--Select--</option>
-          <option value="electricLadger">ElectricLadger</option>
+          <option value="electricladger">Electricladger</option>
         </select>
         <br />
         <br />

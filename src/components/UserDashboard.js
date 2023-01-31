@@ -21,7 +21,7 @@ export default function UserDashboard() {
       <h3>Organization : {localStorage.getItem("orgName")}</h3>
       <h3>prices </h3>
       <h4>Service Chrages {prices.servicesCharges} PKR</h4>
-      <h4>Tax {prices.tax * 100}%</h4>
+      <h4>Tax {prices.tax} %</h4>
       <h4>Unit Price {prices.unitPrice} PKR</h4>
       <div>
         <Button

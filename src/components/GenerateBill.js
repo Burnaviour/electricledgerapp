@@ -48,7 +48,7 @@ const GenerateMyBill = (props) => {
     });
     try {
       const response = await fetch(
-        `http://${props.ip}:4000/channels/mychannel/chaincodes/electricLadger/getbill?peer=peer0.org1.example.com&fcn=queryData&args=["${uid}"]&history=true`,
+        `http://${props.ip}:4000/channels/mychannel/chaincodes/electricledger/getbill?peer=peer0.org1.example.com&fcn=queryData&args=["${uid}"]&history=true`,
         {
           method: "GET",
           headers: headers,

@@ -54,7 +54,7 @@ export default function QueryData() {
       fetch(
         `http://${
           process.env.REACT_APP_IP
-        }:4000/channels/mychannel/chaincodes/electricLadger?args=["${
+        }:4000/channels/mychannel/chaincodes/electricledger?args=["${
           formData.args
         }"]&peer=peer0.org1.example.com&fcn=queryData&history=${
           IsHistory ? "true" : "false"

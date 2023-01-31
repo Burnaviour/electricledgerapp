@@ -28,7 +28,7 @@ function AdduserData() {
   const [apiResponse, setApiResponse] = useState({});
   const [formData, setFormData] = useState({
     fcn: "writeData",
-    chaincodeName: "electricLadger",
+    chaincodeName: "electricledger",
     channelName: "mychannel",
     orgName: "Org1",
     name: " ",
@@ -58,7 +58,7 @@ function AdduserData() {
         Authorization: `Bearer ${localStorage.getItem("jwt")}`,
       });
       const res = await fetch(
-        `http://${process.env.REACT_APP_IP}:4000/channels/mychannel/chaincodes/electricLadger/invokeuserdata`,
+        `http://${process.env.REACT_APP_IP}:4000/channels/mychannel/chaincodes/electricledger/invokeuserdata`,
 
         {
           method: "POST",
@@ -226,7 +226,7 @@ function AdduserData() {
           name="chaincodeName"
         >
           <option value="none">--Select--</option>
-          <option value="electricLadger">ElectricLadger</option>
+          <option value="electricladger">Electricladger</option>
         </select>
         <br />
         <br />
