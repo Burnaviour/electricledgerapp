@@ -216,7 +216,7 @@ function AdduserData() {
           name="chaincodeName"
         >
           <option value="none">--Select--</option>
-          <option value="electricladger">Electricladger</option>
+          <option value="electricledger">Electricledger</option>
         </select>
         <br />
         <br />
