@@ -11,7 +11,7 @@ import {
   Document,
   StyleSheet,
   PDFDownloadLink,
-  PDFViewer,
+  // PDFViewer,
 } from "@react-pdf/renderer";
 
 export default function GenerateBill(props) {
@@ -156,9 +156,10 @@ const GenerateMyBill = (props) => {
             }
           </PDFDownloadLink>{" "}
           <br /> <br />
-          <PDFViewer width="1200px" height="700px">
+          {/* view pdf on page for testing */}
+          {/* <PDFViewer width="1200px" height="700px">
             <PDFFile data={data} />
-          </PDFViewer>
+          </PDFViewer> */}
         </div>
       )}
     </div>

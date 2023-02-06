@@ -227,7 +227,6 @@ export default function QueryData() {
       </form>
       <br />
       <br />
-
       {apiResponse.success && <DataDiv data={apiResponse} />}
     </>
   );

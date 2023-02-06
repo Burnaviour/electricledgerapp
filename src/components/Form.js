@@ -47,10 +47,13 @@ export default function MyForm(props) {
       //check login or register and is it admin ot user and navigate to dashboard
       if (props.type === "login") {
         if (response.success) {
+          console.log(response);
           localStorage.setItem("jwt", response.token);
           localStorage.setItem("username", response.username);
           localStorage.setItem("orgName", response.orgName);
           localStorage.setItem("prices", JSON.stringify(response.prices));
+          localStorage.setItem("result", JSON.stringify(response.result));
+          localStorage.setItem("history", JSON.stringify(response.history));
 
           dangerAlert();
 

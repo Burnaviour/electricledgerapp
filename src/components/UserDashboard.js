@@ -5,19 +5,20 @@ export default function UserDashboard() {
   const navigator = useNavigate();
   function handleClick(e) {
     if (e.target.id === "btn-1") {
-      navigator("/query-bill");
+      navigator("/user-query-bill");
     }
     if (e.target.id === "btn-2") {
       navigator("/generate-bill");
     }
   }
   const prices = JSON.parse(localStorage.getItem("prices"));
-
+  const cnic = JSON.parse(localStorage.getItem("result"))[0].value.cnic;
+  console.log(cnic);
   return (
     <>
       <h1>User Dashboard</h1>
-
       <h2>Welcome {localStorage.getItem("username")}</h2>
+      <h3>CNIC : {cnic}</h3>
       <h3>Organization : {localStorage.getItem("orgName")}</h3>
       <h3>prices </h3>
       <h4>Service Chrages {prices.servicesCharges} PKR</h4>
