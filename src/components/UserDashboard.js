@@ -10,10 +10,12 @@ export default function UserDashboard() {
     if (e.target.id === "btn-2") {
       navigator("/generate-bill");
     }
+    if (e.target.id === "btn-3") {
+      navigator("/user-query-history");
+    }
   }
   const prices = JSON.parse(localStorage.getItem("prices"));
   const cnic = JSON.parse(localStorage.getItem("result"))[0].value.cnic;
-  console.log(cnic);
   return (
     <>
       <h1>User Dashboard</h1>
@@ -43,6 +45,16 @@ export default function UserDashboard() {
           onClick={handleClick}
         >
           Generate Bill
+        </Button>
+
+        <Button
+          id="btn-3"
+          variant="success"
+          className="mx-4 my-4"
+          type="button"
+          onClick={handleClick}
+        >
+          Bill History
         </Button>
       </div>
     </>

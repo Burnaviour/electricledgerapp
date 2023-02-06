@@ -17,6 +17,7 @@ import AdminForm from "./components/AdminRegister";
 import WalletUpload from "./components/WalletUpload";
 import UpdateUserData from "./components/UpdateUserData";
 import UserBillData from "./components/UserBillData";
+import UserHistory from "./components/UserHistory";
 function App() {
   let ip = process.env.REACT_APP_IP;
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="/admin-Login" element={<Login user="admin" />} />
           <Route exact path="/query-bill" element={<QueryBill />} />
           <Route exact path="/user-query-bill" element={<UserBillData />} />
+          <Route exact path="/user-query-history" element={<UserHistory />} />
           <Route exact path="/set-prices" element={<SetPrices />} />
           <Route exact path="/admin-dashboard" element={<AdminDashboard />} />
           <Route exact path="/user-dashboard" element={<UserDashboard />} />
