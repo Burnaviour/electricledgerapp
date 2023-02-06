@@ -12,7 +12,7 @@ export default function DataDiv(props) {
   // const [arr, setArr] = useState([]);
   const [data, setData] = useState(props.data);
   // const [isLoadingbtn, setLoadingbtn] = React.useState(false);
-  console.log("data", data);
+
   const [currentUsage, setCurrentusage] = useState(0);
 
   useEffect(() => {

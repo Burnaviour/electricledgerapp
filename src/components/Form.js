@@ -54,7 +54,6 @@ export default function MyForm(props) {
           localStorage.setItem("prices", JSON.stringify(response.prices));
           localStorage.setItem("result", JSON.stringify(response.result));
           localStorage.setItem("history", JSON.stringify(response.history));
-
           dangerAlert();
 
           props.user === "user"
