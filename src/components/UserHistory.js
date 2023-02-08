@@ -3,7 +3,9 @@ import React from "react";
 function UserHistory() {
   let history = JSON.parse(localStorage.getItem("history"));
   const apiResponse = { history: history };
+  console.log(apiResponse);
   var resultHistory = null;
+
   return (
     <div>
       {getHistory(apiResponse)}
@@ -15,6 +17,7 @@ function UserHistory() {
     resultHistory = data.history.map((item, key) => {
       const date = new Date(item.Timestamp.seconds * 1000);
       const dateString = date.toLocaleString();
+
       return (
         <div key={key}>
           <p>Name: {item.Value.name}</p>

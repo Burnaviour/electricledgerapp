@@ -131,20 +131,21 @@ const GenerateMyBill = (props) => {
       <br />
       {data ? (
         <div>
-          {data.success ? (
+          {data.success && data.result.isMonthly ? (
             <div>
               <p>Monthly Units: {data.result.monthlyUnits}</p>
               <p>Monthly Bill: {data.result.monthlyBill}</p>
               <p>Unit Price: {data.unitPrice}</p>
               <p>Service Charges: {data.ServiceCharges}</p>
               <p>Tax: {data.tax}</p>
+              <p>Current Usage: {data.result.CurrentUsage}</p>
             </div>
           ) : (
             <p>{data.error}</p>
           )}
         </div>
       ) : null}
-      {data.success && (
+      {data.success && data.result.isMonthly && (
         <div>
           <PDFDownloadLink document={<PDFFile data={data} />} filename="FORM">
             {({ loading }) =>
@@ -160,6 +161,14 @@ const GenerateMyBill = (props) => {
           {/* <PDFViewer width="1200px" height="700px">
             <PDFFile data={data} />
           </PDFViewer> */}
+        </div>
+      )}
+      {data.success && !data.result.isMonthly && (
+        <div>
+          <p>
+            Monthly Bill is not generated yet but you can see Your Current usage{" "}
+          </p>
+          <p>Current Units usage: {data.result.CurrentUsage}</p>
         </div>
       )}
     </div>
