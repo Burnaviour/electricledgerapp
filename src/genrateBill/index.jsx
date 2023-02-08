@@ -261,7 +261,6 @@ console.log(data);
           
           
           <Row>
-
           <DataRow>
           <DataLabel>Total Tax Cost (pkr)</DataLabel>
             <DataContainer2>

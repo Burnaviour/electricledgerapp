@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { saveAs } from "file-saver";
 import { Buffer } from "buffer";
+import {
+  FormButton,
+  FormLabel2,
+} from "./adminElements";
+
 
 const WalletDownload = ({ walletFile, success, username }) => {
   const [downloaded, setDownloaded] = useState(false);
@@ -18,16 +23,16 @@ const WalletDownload = ({ walletFile, success, username }) => {
     <>
       {success && downloaded && (
         <div>
-          <p>
+          <FormLabel2>
             Your wallet file has been saved. You can now log in using your
             credentials.
-          </p>
-          <p>if you didn't get file click here to download.</p>
+          </FormLabel2>
+          <FormLabel2>if you didn't get file click here to download.</FormLabel2>
         </div>
       )}
       <br />
       {downloaded && (
-        <button
+        <FormButton
           onClick={() => {
             saveAs(
               new Blob([Buffer.from(walletFile.data)], {
@@ -38,7 +43,7 @@ const WalletDownload = ({ walletFile, success, username }) => {
           }}
         >
           Download Wallet
-        </button>
+        </FormButton>
       )}
     </>
   );

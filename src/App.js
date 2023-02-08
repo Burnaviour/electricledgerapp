@@ -12,6 +12,7 @@ import UserHistoryData from "./pages/userHistoryData";
 import Adduser from "./pages/adduserData";
 import UserUpdate from "./pages/updateuserData";
 import RegisterPage from "./pages/Register";
+import AdminLogin from  "./pages/AdminLogin";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/add-user" element={<Adduser/>} exact />
         <Route path="/update-user-data" element={<UserUpdate/>} exact />
         <Route path="/register" element={<RegisterPage/>} exact />
+        <Route path="/admin-register" element={<AdminLogin/>} exact />
       </Routes>
     </Router>
     
