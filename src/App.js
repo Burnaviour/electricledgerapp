@@ -6,10 +6,12 @@ import SigninPage from "./pages/signin";
 import PuserDashboard from "./pages/PuserDashboard";
 import BillGenrate from "./pages/GenrateBill";
 import UserBill from "./pages/userBillData";
-
-
+import OrganisationDashboard from "./pages/AdminDashboard";
+import Setprices from "./pages/setPrice";
 import UserHistoryData from "./pages/userHistoryData";
-
+import Adduser from "./pages/adduserData";
+import UserUpdate from "./pages/updateuserData";
+import RegisterPage from "./pages/Register";
 
 function App() {
   return (
@@ -23,7 +25,11 @@ function App() {
         <Route path="/generate-bill" element={<BillGenrate/>} exact />
         <Route path="/user-query-bill" element={<UserBill/>} exact />
         <Route path="/user-query-history" element={<UserHistoryData/>} exact />
-
+        <Route path="/admin-dashboard" element={<OrganisationDashboard/>} exact />
+        <Route path="/set-prices" element={<Setprices/>} exact />
+        <Route path="/add-user" element={<Adduser/>} exact />
+        <Route path="/update-user-data" element={<UserUpdate/>} exact />
+        <Route path="/register" element={<RegisterPage/>} exact />
       </Routes>
     </Router>
     

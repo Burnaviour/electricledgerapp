@@ -94,10 +94,6 @@ color: #FFFFFF;
 // `;
 
 export const FormLabel = styled.label`
-  /* margin-bottom: 8px;
-  font-size: 14px;
-  color: #fff; */
-/* width: 72px; */
 height: 19px;
 margin-top: 10px;
 font-family: 'Nunito Sans';
@@ -105,31 +101,7 @@ font-style: normal;
 font-weight: 400;
 font-size: 15px;
 line-height: 19px;
-/* identical to box height */
-
-
-/* Gray 3 */
-
 color: #828282;
-
-`;
-export const FormInput = styled.input`
-  box-sizing: border-box;
-
-/* Auto layout */
-
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 13px 10px;
-gap: 5px;
-
-width: 420px;
-height: 45px;
-
-background: #FFFFFF;
-border: 1px solid #DED2D9;
-border-radius: 5px;
 `;
 
 export const FormSelect = styled.select`
@@ -151,6 +123,25 @@ background: #FFFFFF;
 border: 1px solid #DED2D9;
 border-radius: 5px;
 
+`;
+
+export const FormInput = styled.input`
+  box-sizing: border-box;
+
+/* Auto layout */
+
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 13px 10px;
+gap: 5px;
+
+width: 420px;
+height: 45px;
+
+background: #FFFFFF;
+border: 1px solid #DED2D9;
+border-radius: 5px;
 `;
 
 

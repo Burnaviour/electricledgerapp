@@ -226,7 +226,8 @@ export default function MyForm(props) {
           <DropOption value="Org1">Org1</DropOption>
         </FormSelect>
         
-        <FormButton>Login</FormButton>
+        {props.type === "login"&&(<FormButton>Login</FormButton>) }
+        {props.type === "register"&&(<FormButton>Register</FormButton>) }
       </form>
     </>
   );

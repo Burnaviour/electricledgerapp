@@ -10,6 +10,7 @@ import hellopic from "../images/Hello.svg"
 import {Welcome, Background, 
 Row,
 DataLabel,
+DataLabel1,
 DivCenter,
 DataContainer2,
 DataContainer3,
@@ -28,6 +29,7 @@ Flexer,
 HeadTiltle,
 HeadTiltle2,
 LayoutImage,
+DataContainer51,
 FormInput,
 Button1,
 DataRow} from "./generateElements"
@@ -55,7 +57,11 @@ export default function GenerateBill(props) {
 const GenerateMyBill = (props) => {
   const [uid, setUid] = useState("");
   // const [data, setData] = useState({ success: false });
-  const [data, setData] = useState({success: true,tax:5,ServiceCharges:10,unitPrice:20,result:{monthlyBill:100,monthlyUnits:12} });
+  const [data, setData] = useState({success: true,tax:5,ServiceCharges:10,unitPrice:20,result:{
+    CurrentUsage: 0,
+    isMonthly:false
+
+} });
   const [showErrorAlert, setShowErrorAlert] = useState({ error: false });
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 console.log(data);
@@ -188,12 +194,32 @@ console.log(data);
         </DataContainer3>   
           </Row>
      </form>
-    
+     
+     {data.success && !data.result.isMonthly && (
+        <div>
+
+          <DataContainer51>
+          <DataLabel1>Monthly Bill is not generated yet but you can see Your Current usage</DataLabel1></DataContainer51>
+          <br></br>
+          <DataLabel>Your Current usage:</DataLabel>
+            <DataContainer>
+            <DataText>
+            {data.result.CurrentUsage}
+            </DataText>
+            </DataContainer>
+        
+          {/* <p>
+            Monthly Bill is not generated yet but you can see Your Current usage
+          </p>
+          <p>Current Units usage: {data.result.CurrentUsage}</p> */}
+      </div>
+)}
+
 
 
      {data ? (
         <div>
-          {data.success ? (
+          {data.success && data.result.isMonthly ? (
             <div>
               <DataRow>
           <DataLabel>Monthly Bill</DataLabel>
@@ -213,6 +239,16 @@ console.log(data);
                 </DataText>
             </DataContainer2>
         </DataRow>
+
+        <DataRow>
+          <DataLabel>Currently Used Units</DataLabel>
+            <DataContainer2>
+            <DataText>
+            {data.result.CurrentUsage}
+                </DataText>
+            </DataContainer2>
+        </DataRow>
+
         <DataRow>
           <DataLabel>Unit Price (pkr) </DataLabel>
             <DataContainer2>
@@ -225,6 +261,17 @@ console.log(data);
           
           
           <Row>
+
+          <DataRow>
+          <DataLabel>Total Tax Cost (pkr)</DataLabel>
+            <DataContainer2>
+            <DataText>
+            {data.result.tax}
+                </DataText>
+            </DataContainer2>
+        </DataRow>
+
+
           <DataRow>
           <DataLabel>Service Charges (pkr)</DataLabel>
             <DataContainer2>
@@ -252,7 +299,7 @@ console.log(data);
         </LeftSection>
 
 
-        {data.success && (
+        {data.success && data.result.isMonthly && (
         <div>
           <RightSection>
           <LayoutImage1 src={BillDownload} />
