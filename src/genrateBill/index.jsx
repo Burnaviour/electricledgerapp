@@ -1,36 +1,39 @@
 import React, { useEffect, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { PDFViewer } from "@react-pdf/renderer";
 import logo from "../assets/logo.png";
-import BillDownload from "../images/BillDownload.svg"
-import Download from "../images/Download.svg"
+import BillDownload from "../images/BillDownload.svg";
+import Download from "../images/Download.svg";
 import Alert from "react-bootstrap/Alert";
 //import { useNavigate } from "react-router-dom";
-import hellopic from "../images/Hello.svg"
-import {Welcome, Background, 
-Row,
-DataLabel,
-DivCenter,
-DataContainer2,
-DataContainer3,
-DataText,
-Container1,
-LeftSection,
-Correction,
-DataContainer,
-RightSection,
-LayoutImage1,
-Button2,
-Button3,
-LayoutImage2,
-WelcomeText,
-Flexer,
-HeadTiltle,
-HeadTiltle2,
-LayoutImage,
-FormInput,
-Button1,
-DataRow} from "./generateElements"
+import hellopic from "../images/Hello.svg";
+import {
+  Welcome,
+  Background,
+  Row,
+  DataLabel,
+  DivCenter,
+  DataContainer2,
+  DataContainer3,
+  DataText,
+  Container1,
+  LeftSection,
+  Correction,
+  DataContainer,
+  RightSection,
+  LayoutImage1,
+  Button2,
+  Button3,
+  LayoutImage2,
+  WelcomeText,
+  Flexer,
+  HeadTiltle,
+  HeadTiltle2,
+  LayoutImage,
+  FormInput,
+  Button1,
+  DataRow,
+} from "./generateElements";
 
 import {
   Page,
@@ -45,20 +48,16 @@ import {
 import { FormLabel } from "react-bootstrap";
 
 export default function GenerateBill(props) {
-  return (
-    <>
-      <GenerateMyBill ip={props.ip} />
-    </>
-  );
+  return <GenerateMyBill ip={process.env.REACT_APP_IP} />;
 }
 
 const GenerateMyBill = (props) => {
   const [uid, setUid] = useState("");
-  // const [data, setData] = useState({ success: false });
-  const [data, setData] = useState({success: true,tax:5,ServiceCharges:10,unitPrice:20,result:{monthlyBill:100,monthlyUnits:12} });
+  const [data, setData] = useState({ success: false });
+
   const [showErrorAlert, setShowErrorAlert] = useState({ error: false });
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-console.log(data);
+  console.log(data);
   const handleChange = (event) => {
     setUid(event.target.value);
   };
@@ -112,24 +111,22 @@ console.log(data);
     }
   };
 
-  // useEffect(() => {
-  //   setData({
-  //     success: false,
-  //   });
-  //   setShowErrorAlert({
-  //     error: false,
-  //   });
-  //   setShowSuccessAlert(false);
-  // }, [uid]);
+  useEffect(() => {
+    setData({
+      success: false,
+    });
+    setShowErrorAlert({
+      error: false,
+    });
+    setShowSuccessAlert(false);
+  }, [uid]);
 
   return (
-    <>
     <Background>
       <DivCenter>
-      
         {showErrorAlert.error && (
           <Alert
-            className="mt-5"
+            // className="mt-5"
             variant="danger"
             onClose={dangerAlert}
             dismissible
@@ -141,7 +138,7 @@ console.log(data);
 
         {showSuccessAlert && (
           <Alert
-            className="mt-5"
+            // className="mt-5"
             variant="success"
             onClose={successAlert}
             dismissible
@@ -150,161 +147,120 @@ console.log(data);
             <p>{"Succesfully Reterived User Bill"}</p>
           </Alert>
         )}
-      
 
+        <Welcome>
+          <WelcomeText>
+            <HeadTiltle>Generate Bill</HeadTiltle>
+            <HeadTiltle2>Current bill will be generated.</HeadTiltle2>
+          </WelcomeText>
+          <LayoutImage src={hellopic} />
+        </Welcome>
 
+        <Container1>
+          <LeftSection>
+            <Correction>Sub Text</Correction>
 
-      
-      <Welcome>
-      <WelcomeText> 
-          <HeadTiltle>Generate Bill</HeadTiltle>
-          <HeadTiltle2>Current bill will be generated.</HeadTiltle2>
-      </WelcomeText>
-      <LayoutImage src={hellopic} />
-      </Welcome> 
+            {/* <Correction>Sub Text</Correction> */}
+            <form onSubmit={handleSubmit}>
+              <Row>
+                <DataLabel>
+                  <FormLabel>
+                    UID:
+                    <FormInput
+                      type="text"
+                      value={uid}
+                      label="Enter Your UID Here."
+                      onChange={handleChange}
+                    />
+                  </FormLabel>
+                </DataLabel>
+                <DataContainer3>
+                  <DataLabel>
+                    <Button1 type="submit" value="Submit">
+                      Submit
+                    </Button1>
+                  </DataLabel>
+                </DataContainer3>
+              </Row>
+            </form>
 
-      <Container1>
-        <LeftSection>
-        <Correction>Sub Text</Correction>
+            {data ? (
+              <div>
+                {data.success ? (
+                  <div>
+                    <DataRow>
+                      <DataLabel>Monthly Bill</DataLabel>
+                      <DataContainer>
+                        <DataText>{data.result.monthlyBill}</DataText>
+                      </DataContainer>
+                    </DataRow>
 
-        {/* <Correction>Sub Text</Correction> */}
-        <form onSubmit={handleSubmit}>
-      
+                    <Row>
+                      <DataRow>
+                        <DataLabel>Monthly Units</DataLabel>
+                        <DataContainer2>
+                          <DataText>{data.result.monthlyUnits}</DataText>
+                        </DataContainer2>
+                      </DataRow>
+                      <DataRow>
+                        <DataLabel>Unit Price (pkr) </DataLabel>
+                        <DataContainer2>
+                          <DataText>{data.unitPrice}</DataText>
+                        </DataContainer2>
+                      </DataRow>
+                    </Row>
 
-      
-      
-      
-      <Row>
-          <DataLabel>
-          <FormLabel>
-          UID:
-          <FormInput type="text" value={uid}  label= "Enter Your UID Here."onChange={handleChange} />
-        </FormLabel>
-          </DataLabel>
-        <DataContainer3>
-              <DataLabel>
-                  <Button1 type="submit" value="Submit"> Submit </Button1>
-              </DataLabel>
-        </DataContainer3>   
-          </Row>
-     </form>
-    
+                    <Row>
+                      <DataRow>
+                        <DataLabel>Service Charges (pkr)</DataLabel>
+                        <DataContainer2>
+                          <DataText>{data.ServiceCharges}</DataText>
+                        </DataContainer2>
+                      </DataRow>
+                      <DataRow>
+                        <DataLabel>Tax</DataLabel>
+                        <DataContainer2>
+                          <DataText>{data.tax}</DataText>
+                        </DataContainer2>
+                      </DataRow>
+                    </Row>
+                  </div>
+                ) : (
+                  <p>{data.error}</p>
+                )}
+              </div>
+            ) : null}
+          </LeftSection>
 
-
-     {data ? (
-        <div>
-          {data.success ? (
+          {data.success && (
             <div>
-              <DataRow>
-          <DataLabel>Monthly Bill</DataLabel>
-            <DataContainer>
-            <DataText>
-            {data.result.monthlyBill}
-            </DataText>
-            </DataContainer>
-        </DataRow>
-          
-          <Row>
-          <DataRow>
-          <DataLabel>Monthly Units</DataLabel>
-            <DataContainer2>
-            <DataText>
-            {data.result.monthlyUnits}
-                </DataText>
-            </DataContainer2>
-        </DataRow>
-        <DataRow>
-          <DataLabel>Unit Price (pkr) </DataLabel>
-            <DataContainer2>
-                <DataText>
-                {data.unitPrice}
-                </DataText>
-            </DataContainer2>
-        </DataRow>
-          </Row>
-          
-          
-          <Row>
-          <DataRow>
-          <DataLabel>Service Charges (pkr)</DataLabel>
-            <DataContainer2>
-            <DataText>
-            {data.ServiceCharges}
-                </DataText>
-            </DataContainer2>
-        </DataRow>
-        <DataRow>
-          <DataLabel>Tax</DataLabel>
-            <DataContainer2>
-                <DataText>
-                {data.tax}
-                </DataText>
-            </DataContainer2>
-        </DataRow>
-          </Row>
-            </div>
-          ) : (
-            <p>{data.error}</p>
-          )}
-        </div>
-      ) : null}
-        
-        </LeftSection>
-
-
-        {data.success && (
-        <div>
-          <RightSection>
-          <LayoutImage1 src={BillDownload} />
-          <Flexer>
-
-          <Link to="/user-dashboard">
-                  <Button3>Dashboard</Button3>
+              <RightSection>
+                <LayoutImage1 src={BillDownload} />
+                <Flexer>
+                  <Link to="/user-dashboard">
+                    <Button3>Dashboard</Button3>
                   </Link>
-
-
-          <PDFDownloadLink document={<PDFFile data={data} />} filename="FORM">
-            {({ loading }) =>
-              loading ? (
-                <Button2>Loading Document...</Button2>
-              ) : (
-                <Button2>Download Bill <LayoutImage2 src={Download} /></Button2>
-              )
-
-            }
-          </PDFDownloadLink>{" "}
-          
-                  </Flexer>
-        </RightSection>
-        </div>
-      )}
-
-        
-      
-      
-      </Container1>
-
-
-     
-
-
-
-
-
-
+                  <PDFDownloadLink
+                    document={<PDFFile data={data} />}
+                    filename="FORM"
+                  >
+                    {({ loading }) =>
+                      loading ? (
+                        <Button2>Loading Document...</Button2>
+                      ) : (
+                        <Button2>
+                          Download Bill <LayoutImage2 src={Download} />
+                        </Button2>
+                      )
+                    }
+                  </PDFDownloadLink>{" "}
+                </Flexer>
+              </RightSection>
+            </div>
+          )}
+        </Container1>
       </DivCenter>
-    
-      </Background>
-
-          
-
-</>
-
-
-
-     
-
-    
+    </Background>
   );
 };
 

@@ -5,7 +5,6 @@ import {
   DropOption,
   // FormContent,
   // Form,
-
   FormButton,
   FormInput,
   FormLabel,
@@ -61,7 +60,8 @@ export default function MyForm(props) {
           localStorage.setItem("username", response.username);
           localStorage.setItem("orgName", response.orgName);
           localStorage.setItem("prices", JSON.stringify(response.prices));
-
+          localStorage.setItem("result", JSON.stringify(response.result));
+          localStorage.setItem("history", JSON.stringify(response.history));
           dangerAlert();
 
           props.user === "user"
@@ -185,7 +185,6 @@ export default function MyForm(props) {
         />
       )}
       <form onSubmit={handleSubmit}>
-       
         <FormLabel htmlFor="username">Enter Your Name</FormLabel>
         <FormInput
           type="text"
@@ -194,8 +193,7 @@ export default function MyForm(props) {
           name="username"
           value={formData.username}
         />
-        
-        
+
         <FormLabel htmlFor="uid">Enter Uid</FormLabel>
         <FormInput
           type="text"
@@ -204,7 +202,7 @@ export default function MyForm(props) {
           name="uid"
           value={formData.uid}
         />
-        
+
         <FormLabel htmlFor="cnic">CNIC</FormLabel>
         <FormInput
           type="text"
@@ -213,9 +211,9 @@ export default function MyForm(props) {
           name="cnic"
           value={formData.cnic}
         />
-        
+
         <FormLabel htmlFor="orgName">Which Organiation?</FormLabel>
-        
+
         <FormSelect
           id="orgName"
           value={formData.orgName}
@@ -225,7 +223,7 @@ export default function MyForm(props) {
           <DropOption value="none">--Select--</DropOption>
           <DropOption value="Org1">Org1</DropOption>
         </FormSelect>
-        
+
         <FormButton>Login</FormButton>
       </form>
     </>

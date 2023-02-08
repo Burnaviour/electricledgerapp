@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import "@fontsource/nunito-sans"; 
-
+import "@fontsource/nunito-sans";
 
 // export const Container = styled.div`
 // /* position: ;
@@ -71,19 +70,18 @@ export const Form = styled.form`
   }
 `;
 export const FormH1 = styled.h1`
-width: 367px;
-height: 49px;
-margin-top: 20px;
+  width: 367px;
+  height: 49px;
+  margin-top: 20px;
 
-font-family: 'Nunito Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 32px;
-line-height: 49px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 49px;
 
-color: #FFFFFF;
+  color: #ffffff;
 `;
-
 
 // export const PicTag = styled.div`
 // position: absolute;
@@ -97,94 +95,85 @@ export const FormLabel = styled.label`
   /* margin-bottom: 8px;
   font-size: 14px;
   color: #fff; */
-/* width: 72px; */
-height: 19px;
-margin-top: 10px;
-font-family: 'Nunito Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 15px;
-line-height: 19px;
-/* identical to box height */
+  /* width: 72px; */
+  height: 19px;
+  margin-top: 10px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 19px;
+  /* identical to box height */
 
+  /* Gray 3 */
 
-/* Gray 3 */
-
-color: #828282;
-
+  color: #828282;
 `;
 export const FormInput = styled.input`
   box-sizing: border-box;
 
-/* Auto layout */
+  /* Auto layout */
 
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 13px 10px;
-gap: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 13px 10px;
+  gap: 5px;
 
-width: 420px;
-height: 45px;
+  width: 420px;
+  height: 45px;
 
-background: #FFFFFF;
-border: 1px solid #DED2D9;
-border-radius: 5px;
+  background: #ffffff;
+  border: 1px solid #ded2d9;
+  border-radius: 5px;
 `;
 
 export const FormSelect = styled.select`
   box-sizing: border-box;
 
-/* Auto layout */
+  /* Auto layout */
 
-display: flex;
-flex-direction: row;
-align-items: center;
-padding: 13px 10px;
-gap: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 13px 10px;
+  gap: 5px;
 
-width: 420px;
-height: 50px;
-color: rgba(10, 24, 19, 0.59);
+  width: 420px;
+  height: 50px;
+  color: rgba(10, 24, 19, 0.59);
 
-background: #FFFFFF;
-border: 1px solid #DED2D9;
-border-radius: 5px;
-
+  background: #ffffff;
+  border: 1px solid #ded2d9;
+  border-radius: 5px;
 `;
 
-
 export const DropOption = styled.option`
-    
-    text-decoration: none;
-    &:hover {
-      background-color: #01bf71;
-    }
-
+  text-decoration: none;
+  &:hover {
+    background-color: #01bf71;
+  }
 `;
 
 export const FormH2 = styled.h2`
-width: 358px;
-height: 22px;
+  width: 358px;
+  height: 22px;
 
-font-family: 'Nunito Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 12px;
-line-height: 22px;
-/* identical to box height */
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 22px;
+  /* identical to box height */
 
+  color: #01bf71;
 
-color: #01BF71;
+  /* Inside auto layout */
 
-
-/* Inside auto layout */
-
-flex: none;
-order: 1;
-flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 `;
-
 
 export const FormButton = styled.button`
   display: flex;
@@ -192,24 +181,25 @@ export const FormButton = styled.button`
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-gap: 13px;
+  gap: 13px;
 
-width: 420px;
-height: 50px;
+  width: 420px;
+  height: 50px;
 
-background: #01BF71;
-border-radius: 6px;
+  background: #01bf71;
+  border-radius: 6px;
 
-/* Inside auto layout */
+  /* Inside auto layout */
 
-flex: none;
-order: 1;
-flex-grow: 0;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
   cursor: pointer;
-   &:hover {
+  &:hover {
     transition: all 0.2s ease-in-out;
     background: #fff;
-    color: #000}
+    color: #000;
+  }
 `;
 /* export const Text = styled.Text`
   text-align: center;
@@ -219,111 +209,104 @@ flex-grow: 0;
 `; */
 
 export const LogIn = styled.div`
-width: 367px;
-height: 49px;
-margin: 0 auto;
+  width: 367px;
+  height: 49px;
+  margin: 0 auto;
 
-font-family: 'Nunito Sans';
-font-style: normal;
-font-weight: 700;
-font-size: 32px;
-line-height: 49px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 49px;
 
-color: #FFFFFF;
-/* Inside auto layout */
-flex: none;
-order: 0;
-flex-grow: 0;`;
-
-
+  color: #ffffff;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+`;
 
 export const StyledContainer = styled.div`
-overflow: hidden;
+  overflow: hidden;
   display: flex;
-  min-height:100vh;
-  z-index:  ;
+  min-height: 100vh;
+  z-index: ;
   position: RELATIVE;
 `;
 
 export const StyledLeft = styled.div`
   width: 50vw;
-  z-index:  -1;
-  margin: 0; 
+  z-index: -1;
+  margin: 0;
   background-color: #01bf71;
-  
 `;
 
-export  const StyledRight = styled.div`
+export const StyledRight = styled.div`
   width: 50vw;
-   z-index:  0;
-  background-color: #0A1813;
+  z-index: 0;
+  background-color: #0a1813;
 `;
 
-export const Styledh3= styled.text`
-color: "#01bf71"`;
+export const Styledh3 = styled.text`
+  color: "#01bf71";
+`;
 
 export const BoxH3 = styled.div`
-display: flex;
-flex-direction: row;
-color: #828282;
-justify-content: center;
-align-items: center;
-padding: 10px;
-gap: 13px;
-margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  color: #828282;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 13px;
+  margin-top: 15px;
 
-width: 420px;
-height: 39px;
+  width: 420px;
+  height: 39px;
 
-border: 1px solid #828282;
-border-radius: 5px;
+  border: 1px solid #828282;
+  border-radius: 5px;
 
-/* Inside auto layout */
+  /* Inside auto layout */
 
-flex: none;
-order: 1;
-flex-grow: 0;
-
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 `;
 
 export const BoxH31 = styled.div`
-display: flex;
-flex-direction: row;
-color: #828282;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: row;
+  color: #828282;
+  justify-content: center;
+  align-items: center;
 
-gap: 13px;
-margin-top: 20px;
-width: 420px;
-height: 39px;
+  gap: 13px;
+  margin-top: 20px;
+  width: 420px;
+  height: 39px;
 
-/* Inside auto layout */
+  /* Inside auto layout */
 
-flex: none;
-order: 1;
-flex-grow: 0;
-
+  flex: none;
+  order: 1;
+  flex-grow: 0;
 `;
 export const StyledCenter = styled.div`
-/* padding: 30px; */
-margin-top: 40px;
-display: flex;
-justify-content: center;
- align-items: center;
-
-
+  /* padding: 30px; */
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 /* will check back when time is not bahhot tight */
 export const BahotTight = styled.div`
   min-width: 1000px;
-  min-height: 700px;
+  min-height: 1000px;
+  background-color: #01bf71;
+  background-repeat: repeat;
   @media (max-width: 1000px) {
     min-width: 700px;
   }
 `;
-
-
-
-
