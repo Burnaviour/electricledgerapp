@@ -6,23 +6,28 @@ import SigninPage from "./pages/signin";
 import PuserDashboard from "./pages/PuserDashboard";
 import BillGenrate from "./pages/GenrateBill";
 import UserBill from "./pages/userBillData";
-
+import Setprices from "./pages/setPrice";
 import UserHistoryData from "./pages/userHistoryData";
 
 function App() {
   return (
-    // <BahotTight>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} exact />
-        <Route path="/signin" element={<SigninPage />} exact />
-        <Route path="/user-dashboard" element={<PuserDashboard />} exact />
-        <Route path="/generate-bill" element={<BillGenrate />} exact />
-        <Route path="/user-query-bill" element={<UserBill />} exact />
-        <Route path="/user-query-history" element={<UserHistoryData />} exact />
-      </Routes>
-    </Router>
-    // </BahotTight>
+    <BahotTight>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} exact />
+          <Route path="/signin" element={<SigninPage />} exact />
+          <Route path="/user-dashboard" element={<PuserDashboard />} exact />
+          <Route path="/generate-bill" element={<BillGenrate />} exact />
+          <Route path="/user-query-bill" element={<UserBill />} exact />
+          <Route
+            path="/user-query-history"
+            element={<UserHistoryData />}
+            exact
+          />
+          <Route path="/set-prices" element={<Setprices />} exact />
+        </Routes>
+      </Router>
+    </BahotTight>
   );
 }
 
