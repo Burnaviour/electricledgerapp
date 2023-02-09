@@ -9,11 +9,6 @@ import {
 import {
   FooterContainer,
   FooterWrap,
-  FooterLinkWrapper,
-  FooterLinkItems,
-  FooterLinkContainer,
-  FooterLinkTitle,
-  FooterLink,
   SocialIconLink,
   SocialIcons,
   SocialLogo,

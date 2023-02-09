@@ -224,7 +224,7 @@ const GenerateMyBill = (props) => {
                       <DataRow>
                         <DataLabel>Monthly Bill</DataLabel>
                         <DataContainer>
-                          <DataText>{data.result.monthlyBill}</DataText>
+                          <DataText>{data.result.monthlyBill} Rs</DataText>
                         </DataContainer>
                       </DataRow>
 
@@ -246,7 +246,7 @@ const GenerateMyBill = (props) => {
                         <DataRow>
                           <DataLabel>Unit Price (pkr) </DataLabel>
                           <DataContainer2>
-                            <DataText>{data.unitPrice}</DataText>
+                            <DataText>{data.unitPrice} Rs</DataText>
                           </DataContainer2>
                         </DataRow>
                       </Row>
@@ -255,20 +255,20 @@ const GenerateMyBill = (props) => {
                         <DataRow>
                           <DataLabel>Total Tax Cost (pkr)</DataLabel>
                           <DataContainer2>
-                            <DataText>{data.result.tax}</DataText>
+                            <DataText>{data.result.tax} Rs</DataText>
                           </DataContainer2>
                         </DataRow>
 
                         <DataRow>
                           <DataLabel>Service Charges (pkr)</DataLabel>
                           <DataContainer2>
-                            <DataText>{data.ServiceCharges}</DataText>
+                            <DataText>{data.ServiceCharges} Rs</DataText>
                           </DataContainer2>
                         </DataRow>
                         <DataRow>
                           <DataLabel>Tax</DataLabel>
                           <DataContainer2>
-                            <DataText>{data.tax}</DataText>
+                            <DataText>{data.tax} Rs</DataText>
                           </DataContainer2>
                         </DataRow>
                       </Row>
