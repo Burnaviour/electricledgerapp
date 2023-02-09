@@ -6,6 +6,7 @@ import { homeObjOne, homeObjTwo, homeObjThree } from "../components/Info/Data";
 import Navbar from "../components/Navbar";
 import Services from "../components/Services";
 import Sidebar from "../components/SideBar";
+import {Link} from "react-router-dom"
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +22,7 @@ const Home = () => {
       <Info {...homeObjOne} />
       <Info {...homeObjTwo} />
       <Services />
+      
       <Info {...homeObjThree} />
       <Footer />
     </>

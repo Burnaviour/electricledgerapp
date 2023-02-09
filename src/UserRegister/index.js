@@ -23,7 +23,7 @@ export default function Register() {
   console.log(process.env.REACT_APP_IP);
   return (
     <>
-     <StyledContainer>
+     <StyledContainer id='register'>
       <Icon to="/"> &lt;Home</Icon>
       <StyledLeft>
             <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg">
