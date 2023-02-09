@@ -515,3 +515,13 @@ export const BoxW = styled.div`
   font-weight: 700;
   font-size: 30px;
 `;
+export const BoxW1 = styled.div`
+  background-color: lightgrey;
+  padding: 15px;
+  width: 100%;
+  border-radius: 10px;
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 50;
+  font-size: 16px;
+`;

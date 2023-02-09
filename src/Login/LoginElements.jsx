@@ -92,10 +92,6 @@ export const FormH1 = styled.h1`
 // `;
 
 export const FormLabel = styled.label`
-  /* margin-bottom: 8px;
-  font-size: 14px;
-  color: #fff; */
-  /* width: 72px; */
   height: 19px;
   margin-top: 10px;
   font-family: "Nunito Sans";
@@ -103,29 +99,7 @@ export const FormLabel = styled.label`
   font-weight: 400;
   font-size: 15px;
   line-height: 19px;
-  /* identical to box height */
-
-  /* Gray 3 */
-
   color: #828282;
-`;
-export const FormInput = styled.input`
-  box-sizing: border-box;
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 13px 10px;
-  gap: 5px;
-
-  width: 420px;
-  height: 45px;
-
-  background: #ffffff;
-  border: 1px solid #ded2d9;
-  border-radius: 5px;
 `;
 
 export const FormSelect = styled.select`
@@ -142,6 +116,25 @@ export const FormSelect = styled.select`
   width: 420px;
   height: 50px;
   color: rgba(10, 24, 19, 0.59);
+
+  background: #ffffff;
+  border: 1px solid #ded2d9;
+  border-radius: 5px;
+`;
+
+export const FormInput = styled.input`
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 13px 10px;
+  gap: 5px;
+
+  width: 420px;
+  height: 45px;
 
   background: #ffffff;
   border: 1px solid #ded2d9;
@@ -303,9 +296,7 @@ export const StyledCenter = styled.div`
 /* will check back when time is not bahhot tight */
 export const BahotTight = styled.div`
   min-width: 1000px;
-  min-height: 1000px;
-  background-color: #01bf71;
-  background-repeat: repeat;
+  min-height: 700px;
   @media (max-width: 1000px) {
     min-width: 700px;
   }

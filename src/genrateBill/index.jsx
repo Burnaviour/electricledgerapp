@@ -12,6 +12,7 @@ import {
   Background,
   Row,
   DataLabel,
+  DataLabel1,
   DivCenter,
   DataContainer2,
   DataContainer3,
@@ -30,6 +31,7 @@ import {
   HeadTiltle,
   HeadTiltle2,
   LayoutImage,
+  DataContainer51,
   FormInput,
   Button1,
   DataRow,
@@ -48,16 +50,24 @@ import {
 import { FormLabel } from "react-bootstrap";
 
 export default function GenerateBill(props) {
-  return <GenerateMyBill ip={process.env.REACT_APP_IP} />;
+  return (
+    <>
+      <GenerateMyBill ip={process.env.REACT_APP_IP} />
+    </>
+  );
 }
 
 const GenerateMyBill = (props) => {
   const [uid, setUid] = useState("");
   const [data, setData] = useState({ success: false });
+  //   const [data, setData] = useState({success: true,tax:5,ServiceCharges:10,unitPrice:20,result:{
+  //     CurrentUsage: 0,
+  //     isMonthly:false
 
+  // } });
   const [showErrorAlert, setShowErrorAlert] = useState({ error: false });
   const [showSuccessAlert, setShowSuccessAlert] = useState(false);
-  console.log(data);
+
   const handleChange = (event) => {
     setUid(event.target.value);
   };
@@ -122,145 +132,184 @@ const GenerateMyBill = (props) => {
   }, [uid]);
 
   return (
-    <Background>
-      <DivCenter>
-        {showErrorAlert.error && (
-          <Alert
-            // className="mt-5"
-            variant="danger"
-            onClose={dangerAlert}
-            dismissible
-          >
-            <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-            <p>{showErrorAlert.message}</p>
-          </Alert>
-        )}
-
-        {showSuccessAlert && (
-          <Alert
-            // className="mt-5"
-            variant="success"
-            onClose={successAlert}
-            dismissible
-          >
-            <Alert.Heading>Success!</Alert.Heading>
-            <p>{"Succesfully Reterived User Bill"}</p>
-          </Alert>
-        )}
-
-        <Welcome>
-          <WelcomeText>
-            <HeadTiltle>Generate Bill</HeadTiltle>
-            <HeadTiltle2>Current bill will be generated.</HeadTiltle2>
-          </WelcomeText>
-          <LayoutImage src={hellopic} />
-        </Welcome>
-
-        <Container1>
-          <LeftSection>
-            <Correction>Sub Text</Correction>
-
-            {/* <Correction>Sub Text</Correction> */}
-            <form onSubmit={handleSubmit}>
-              <Row>
-                <DataLabel>
-                  <FormLabel>
-                    UID:
-                    <FormInput
-                      type="text"
-                      value={uid}
-                      label="Enter Your UID Here."
-                      onChange={handleChange}
-                    />
-                  </FormLabel>
-                </DataLabel>
-                <DataContainer3>
-                  <DataLabel>
-                    <Button1 type="submit" value="Submit">
-                      Submit
-                    </Button1>
-                  </DataLabel>
-                </DataContainer3>
-              </Row>
-            </form>
-
-            {data ? (
-              <div>
-                {data.success ? (
-                  <div>
-                    <DataRow>
-                      <DataLabel>Monthly Bill</DataLabel>
-                      <DataContainer>
-                        <DataText>{data.result.monthlyBill}</DataText>
-                      </DataContainer>
-                    </DataRow>
-
-                    <Row>
-                      <DataRow>
-                        <DataLabel>Monthly Units</DataLabel>
-                        <DataContainer2>
-                          <DataText>{data.result.monthlyUnits}</DataText>
-                        </DataContainer2>
-                      </DataRow>
-                      <DataRow>
-                        <DataLabel>Unit Price (pkr) </DataLabel>
-                        <DataContainer2>
-                          <DataText>{data.unitPrice}</DataText>
-                        </DataContainer2>
-                      </DataRow>
-                    </Row>
-
-                    <Row>
-                      <DataRow>
-                        <DataLabel>Service Charges (pkr)</DataLabel>
-                        <DataContainer2>
-                          <DataText>{data.ServiceCharges}</DataText>
-                        </DataContainer2>
-                      </DataRow>
-                      <DataRow>
-                        <DataLabel>Tax</DataLabel>
-                        <DataContainer2>
-                          <DataText>{data.tax}</DataText>
-                        </DataContainer2>
-                      </DataRow>
-                    </Row>
-                  </div>
-                ) : (
-                  <p>{data.error}</p>
-                )}
-              </div>
-            ) : null}
-          </LeftSection>
-
-          {data.success && (
-            <div>
-              <RightSection>
-                <LayoutImage1 src={BillDownload} />
-                <Flexer>
-                  <Link to="/user-dashboard">
-                    <Button3>Dashboard</Button3>
-                  </Link>
-                  <PDFDownloadLink
-                    document={<PDFFile data={data} />}
-                    filename="FORM"
-                  >
-                    {({ loading }) =>
-                      loading ? (
-                        <Button2>Loading Document...</Button2>
-                      ) : (
-                        <Button2>
-                          Download Bill <LayoutImage2 src={Download} />
-                        </Button2>
-                      )
-                    }
-                  </PDFDownloadLink>{" "}
-                </Flexer>
-              </RightSection>
-            </div>
+    <>
+      <Background>
+        <DivCenter>
+          {showErrorAlert.error && (
+            <Alert
+              className="mt-5"
+              variant="danger"
+              onClose={dangerAlert}
+              dismissible
+            >
+              <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+              <p>{showErrorAlert.message}</p>
+            </Alert>
           )}
-        </Container1>
-      </DivCenter>
-    </Background>
+
+          {showSuccessAlert && (
+            <Alert
+              className="mt-5"
+              variant="success"
+              onClose={successAlert}
+              dismissible
+            >
+              <Alert.Heading>Success!</Alert.Heading>
+              <p>{"Succesfully Reterived User Bill"}</p>
+            </Alert>
+          )}
+
+          <Welcome>
+            <WelcomeText>
+              <HeadTiltle>Generate Bill</HeadTiltle>
+              <HeadTiltle2>Current bill will be generated.</HeadTiltle2>
+            </WelcomeText>
+            <LayoutImage src={hellopic} />
+          </Welcome>
+
+          <Container1>
+            <LeftSection>
+              <Correction>Sub Text</Correction>
+
+              {/* <Correction>Sub Text</Correction> */}
+              <form onSubmit={handleSubmit}>
+                <Row>
+                  <DataLabel>
+                    <FormLabel>
+                      UID:
+                      <FormInput
+                        type="text"
+                        value={uid}
+                        label="Enter Your UID Here."
+                        onChange={handleChange}
+                      />
+                    </FormLabel>
+                  </DataLabel>
+                  <DataContainer3>
+                    <DataLabel>
+                      <Button1 type="submit" value="Submit">
+                        {" "}
+                        Submit{" "}
+                      </Button1>
+                    </DataLabel>
+                  </DataContainer3>
+                </Row>
+              </form>
+
+              {data.success && !data.result.isMonthly && (
+                <div>
+                  <DataContainer51>
+                    <DataLabel1>
+                      Monthly Bill is not generated yet but you can see Your
+                      Current usage
+                    </DataLabel1>
+                  </DataContainer51>
+                  <br></br>
+                  <DataLabel>Your Current usage:</DataLabel>
+                  <DataContainer>
+                    <DataText>{data.result.CurrentUsage}</DataText>
+                  </DataContainer>
+
+                  {/* <p>
+            Monthly Bill is not generated yet but you can see Your Current usage
+          </p>
+          <p>Current Units usage: {data.result.CurrentUsage}</p> */}
+                </div>
+              )}
+
+              {data ? (
+                <div>
+                  {data.success && data.result.isMonthly ? (
+                    <div>
+                      <DataRow>
+                        <DataLabel>Monthly Bill</DataLabel>
+                        <DataContainer>
+                          <DataText>{data.result.monthlyBill}</DataText>
+                        </DataContainer>
+                      </DataRow>
+
+                      <Row>
+                        <DataRow>
+                          <DataLabel>Monthly Units</DataLabel>
+                          <DataContainer2>
+                            <DataText>{data.result.monthlyUnits}</DataText>
+                          </DataContainer2>
+                        </DataRow>
+
+                        <DataRow>
+                          <DataLabel>Currently Used Units</DataLabel>
+                          <DataContainer2>
+                            <DataText>{data.result.CurrentUsage}</DataText>
+                          </DataContainer2>
+                        </DataRow>
+
+                        <DataRow>
+                          <DataLabel>Unit Price (pkr) </DataLabel>
+                          <DataContainer2>
+                            <DataText>{data.unitPrice}</DataText>
+                          </DataContainer2>
+                        </DataRow>
+                      </Row>
+
+                      <Row>
+                        <DataRow>
+                          <DataLabel>Total Tax Cost (pkr)</DataLabel>
+                          <DataContainer2>
+                            <DataText>{data.result.tax}</DataText>
+                          </DataContainer2>
+                        </DataRow>
+
+                        <DataRow>
+                          <DataLabel>Service Charges (pkr)</DataLabel>
+                          <DataContainer2>
+                            <DataText>{data.ServiceCharges}</DataText>
+                          </DataContainer2>
+                        </DataRow>
+                        <DataRow>
+                          <DataLabel>Tax</DataLabel>
+                          <DataContainer2>
+                            <DataText>{data.tax}</DataText>
+                          </DataContainer2>
+                        </DataRow>
+                      </Row>
+                    </div>
+                  ) : (
+                    <p>{data.error}</p>
+                  )}
+                </div>
+              ) : null}
+            </LeftSection>
+
+            {data.success && data.result.isMonthly && (
+              <div>
+                <RightSection>
+                  <LayoutImage1 src={BillDownload} />
+                  <Flexer>
+                    <Link to="/user-dashboard">
+                      <Button3>Dashboard</Button3>
+                    </Link>
+                    <PDFDownloadLink
+                      document={<PDFFile data={data} />}
+                      filename="FORM"
+                    >
+                      {({ loading }) =>
+                        loading ? (
+                          <Button2>Loading Document...</Button2>
+                        ) : (
+                          <Button2>
+                            Download Bill <LayoutImage2 src={Download} />
+                          </Button2>
+                        )
+                      }
+                    </PDFDownloadLink>{" "}
+                  </Flexer>
+                </RightSection>
+              </div>
+            )}
+          </Container1>
+        </DivCenter>
+      </Background>
+    </>
   );
 };
 

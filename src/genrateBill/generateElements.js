@@ -12,17 +12,17 @@ export const LayoutImage = styled.img`
 
 export const LayoutImage1 = styled.img`
   flex: 1;
-  width: 100%;
-  height: 100%;
-  ${"" /* margin-left: 25%; */}
+  width: 190%;
+  height: 190%;
+  margin-left: 25%;
 
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 10%;
+  padding-bottom: 10%;
 `;
 
 export const LayoutImage2 = styled.img`
-  width: 10%;
-  height: 10%;
+  width: 15%;
+  height: 15%;
   margin-left: 15px;
 `;
 
@@ -35,14 +35,6 @@ export const Background = styled.div`
   background-repeat: repeat;
   background-align: center;
   background-size: cover;
-  margin: 0;
-`;
-
-export const Background1 = styled.div`
-  ${"" /* background-image: url(${bg}); */}
-  background-color: #01bf71;
-  height: 100vh;
-  width: 100%;
   margin: 0;
 `;
 
@@ -149,8 +141,8 @@ export const Button1 = styled.button`
 `;
 
 export const RightSection = styled.div`
-  width: 80%;
-  text-align: center;
+  width: 35%;
+  text-align: left;
   display: flex;
   flex-direction: column;
   align-items: right;
@@ -247,6 +239,19 @@ export const Correction = styled.div`
 //   border: none;
 // `;
 
+export const DataContainer51 = styled.div`
+  display: flex;
+  /* flex-direction: Row; */
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 25px;
+  /* margin-left: 5px; */
+  padding: 3%;
+  background: red;
+  border-radius: 8px;
+`;
+
 export const DataContainer = styled.div`
   display: flex;
   /* flex-direction: Row; */
@@ -260,24 +265,12 @@ export const DataContainer = styled.div`
   border-radius: 14px;
 `;
 
-export const DataContainer5 = styled.div`
-  display: flex;
-  /* flex-direction: Row; */
-
-  width: 100%;
-  height: 50%;
-  /* margin-left: 5px; */
-  padding: 3%;
-  background: #f5f5f7;
-  border-radius: 14px;
-`;
-
 export const DataContainer2 = styled.div`
   display: flex;
   /* flex-direction: Row; */
   justify-content: center;
   align-items: center;
-  width: 300px;
+  width: 200px;
   height: 73px;
   /* margin-left: 5px; */
   padding: 3%;
@@ -287,13 +280,21 @@ export const DataContainer2 = styled.div`
 
 export const DataContainer3 = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 `;
 
 export const DataRow = styled.div`
   margin-bottom: 5px;
   justify-content: space-between;
+`;
+export const DataLabel1 = styled.label`
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  /* line-height: 19px; */
+  color: white;
 `;
 
 export const DataLabel = styled.label`
