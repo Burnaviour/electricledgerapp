@@ -17,6 +17,7 @@ import {
 } from "./adminElements";
 
 import { BoxW1 } from "../userHistory/userhistoryElements";
+import { StyledCenter } from "../Login/LoginElements";
 
 const WalletUpload = (props) => {
   let navigator = useNavigate();
@@ -113,31 +114,32 @@ const WalletUpload = (props) => {
           <br></br>
           <BoxH3> Electric Ledger Admin Dashboard</BoxH3>
           <br></br>
+          <StyledCenter>
+            {error.error && (
+              <Alert
+                className="mt-5"
+                variant="danger"
+                onClose={dangerAlert}
+                dismissible
+              >
+                <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+                <p>{error.error ? error.message : res.message}</p>
+              </Alert>
+            )}
 
-          {error.error && (
-            <Alert
-              className="mt-5"
-              variant="danger"
-              onClose={dangerAlert}
-              dismissible
-            >
-              <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-              <p>{error.error ? error.message : res.message}</p>
-            </Alert>
-          )}
-
-          {showAlert && (
-            <Alert
-              className="mt-5"
-              variant="success"
-              onClose={() => setShowAlert(false)}
-              dismissible
-            >
-              <Alert.Heading>Success!</Alert.Heading>
-              <p>{res.message} moving to Dashboard</p>
-              <Spinner animation="border" variant="Success" />
-            </Alert>
-          )}
+            {showAlert && (
+              <Alert
+                className="mt-5"
+                variant="success"
+                onClose={() => setShowAlert(false)}
+                dismissible
+              >
+                <Alert.Heading>Success!</Alert.Heading>
+                <p>{res.message} moving to Dashboard</p>
+                <Spinner animation="border" variant="Success" />
+              </Alert>
+            )}
+          </StyledCenter>
 
           <form onSubmit={handleUpload}>
             <br />

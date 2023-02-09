@@ -1,5 +1,5 @@
 import React from "react";
-import AdminForm from "./AdminRegister";
+// import AdminForm from "./AdminRegister";
 import MyForm from "./Form";
 import LoginTag from "../images/login-tag.svg";
 import {
@@ -17,12 +17,12 @@ export default function Login(props) {
 
   return (
     <>
-      {props.user === "admin" && (
+      {/* {props.user === "admin" && (
         <div>
           <h1> Admin Login </h1>
           <AdminForm type="login" address="admin/login" user="admin" ip={ip} />
         </div>
-      )}
+      )} */}
 
       {props.user === "user" && (
         <StyledCenter>

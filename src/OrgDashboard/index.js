@@ -60,7 +60,7 @@ export default function AdminDashboard() {
         <DivCenter>
           <Welcome>
             <WelcomeText>
-              <HeadTiltle>Organisation Dashboard</HeadTiltle>
+              <HeadTiltle>Organization Dashboard</HeadTiltle>
               <HeadTiltle2>Organization Controls</HeadTiltle2>
             </WelcomeText>
             <LayoutImage src={hellopic} />
@@ -99,8 +99,8 @@ export default function AdminDashboard() {
                 <ImageContainer>
                   <Image src={green} />
                   <TextContainer>
-                    <Text>Genrate Bill</Text>
-                    <SubText>Current bill will be genrated.</SubText>
+                    <Text>Query User Bill</Text>
+                    <SubText>User Data and History </SubText>
                   </TextContainer>
                 </ImageContainer>
 
@@ -115,7 +115,7 @@ export default function AdminDashboard() {
                   type="button"
                   onClick={handleClick}
                 >
-                  Genrate Bill
+                  Query User Bill
                 </Button1>
               </LeftSectionRow1>
             </LeftSection>

@@ -94,12 +94,13 @@ export const FormH1 = styled.h1`
 export const FormLabel = styled.label`
   height: 19px;
   margin-top: 10px;
+  padding-bottom: 10px;
   font-family: "Nunito Sans";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
   line-height: 19px;
-  color: #828282;
+  color: white;
 `;
 
 export const FormSelect = styled.select`

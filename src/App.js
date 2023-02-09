@@ -14,6 +14,7 @@ import UserUpdate from "./pages/updateuserData";
 import RegisterPage from "./pages/Register";
 import AdminLogin from "./pages/AdminLogin";
 import AdminVerify from "./pages/verifyAdmin";
+import UserBillQuery from "./pages/queryBill";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
           exact
         />
         <Route path="/verify-user" element={<AdminVerify />} exact />
+        <Route path="/query-bill" element={<UserBillQuery />} exact />
       </Routes>
     </Router>
     // </BahotTight>

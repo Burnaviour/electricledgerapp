@@ -186,7 +186,7 @@ export const FormButton = styled.button`
   margin-top: 20px;
   gap: 13px;
 
-  width: 420px;
+  width: 100%;
   height: 50px;
 
   background: #01bf71;
@@ -262,12 +262,12 @@ export const BoxH12 = styled.div`
   color: #828282;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  ${"" /* padding: 10px; */}
   gap: 13px;
   margin-top: 15px;
   margin-bottom: 15px;
 
-  width: 420px;
+  width: 100%;
   height: 39px;
 
   ${"" /* border: 1px solid #828282; */}
