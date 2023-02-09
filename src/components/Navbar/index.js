@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaBars } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
-import svg from  '../../../src/assets/logo.svg';
+import svg from "../../../src/assets/logo.svg";
 import {
   Nav,
   NavbarContainer,
@@ -40,12 +40,12 @@ const Navbar = ({ toggle }) => {
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
             <NavLogo to="/" onClick={toggleHome}>
-            <NavSVG>
-            <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
-            <image href={svg} height="50" width="50" />
-              </svg>
+              <NavSVG>
+                <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                  <image href={svg} height="50" width="50" />
+                </svg>
               </NavSVG>
-               Electric Ledger
+              Electric Ledger
             </NavLogo>
             <MobileIcon onClick={toggle}>
               <FaBars />
@@ -84,7 +84,7 @@ const Navbar = ({ toggle }) => {
                   exact="true"
                   offset={-80}
                 >
-                  Services
+                  Benefits
                 </NavLinks>
               </NavItem>
               <NavItem>
@@ -96,13 +96,15 @@ const Navbar = ({ toggle }) => {
                   exact="true"
                   offset={-80}
                 >
-                  Sign Up
+                  Registration
                 </NavLinks>
               </NavItem>
             </NavMenu>
             <NavBtn>
               <NavBtnLink to="/signin">Login </NavBtnLink>
-
+            </NavBtn>
+            <NavBtn>
+              <NavBtnLink to="/register">Register</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>

@@ -44,7 +44,7 @@ const Info = ({
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 <BtnWrap>
                   <Button
-                    to="/register"
+                    to="home"
                     smooth={true}
                     duration={500}
                     spy={true}
