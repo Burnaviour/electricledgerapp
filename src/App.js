@@ -1,5 +1,5 @@
 import "./App.css";
-import{BahotTight} from "./Login/LoginElements.jsx"; 
+// import{BahotTight} from "./Login/LoginElements.jsx"; 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages";
 import SigninPage from "./pages/signin";
@@ -14,10 +14,11 @@ import UserUpdate from "./pages/updateuserData";
 import RegisterPage from "./pages/Register";
 import AdminLogin from  "./pages/AdminLogin";
 import AdminVerify from "./pages/verifyAdmin";
+import UserBillQuery from "./pages/queryBill"
 
 function App() {
   return (
-    <BahotTight>
+ 
 
     <Router>
       <Routes>
@@ -34,10 +35,13 @@ function App() {
         <Route path="/register" element={<RegisterPage/>} exact />
         <Route path="/admin-register" element={<AdminLogin/>} exact />
         <Route path="/admin-login" element={<AdminVerify/>} exact />
+        <Route path="/query-bill" element={<UserBillQuery/>} exact />
+
+
       </Routes>
     </Router>
     
-    </BahotTight>
+   
   );
 }
 

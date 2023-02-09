@@ -202,7 +202,40 @@ export default function QueryData() {
 
       <form onSubmit={handleSubmit}>
         <br />
-        <label htmlFor="uid">Please enter your user id here</label> <br />
+
+        <Row>
+          <DataLabel>
+          <FormLabel>
+          Please enter your user id here:
+          <FormInput type="text"   id="uid" value={formData.args} placeholder="User ID"  name="args" label= "Please enter your user id here"onChange={handleChange} />
+        </FormLabel>
+          </DataLabel>
+        <DataContainer3>
+              <DataLabel>
+              <DataLabel htmlFor="switch">History</DataLabel>
+               <Switch id="switch" onClick={toggleHistory} />
+                  <Button1 variant="primary"
+          type="submit"
+          disabled={isLoading}
+          onClick={!isLoading ? handleClick : null} value="Submit"> {isLoading ? "Loading…" : "Submit"} </Button1>
+              </DataLabel>
+        </DataContainer3>   
+          </Row>
+
+          {/* <DataLabel htmlFor="switch">History</DataLabel>
+          <Switch id="switch" onClick={toggleHistory} />
+
+
+          <Button
+          variant="primary"
+          type="submit"
+          disabled={isLoading}
+          onClick={!isLoading ? handleClick : null}
+        >
+          {isLoading ? "Loading…" : "Submit"}
+        </Button> */}
+
+        {/* <label htmlFor="uid">Please enter your user id here</label> <br />
         <input
           id="uid"
           type="text"
@@ -223,7 +256,7 @@ export default function QueryData() {
           onClick={!isLoading ? handleClick : null}
         >
           {isLoading ? "Loading…" : "Submit"}
-        </Button>
+        </Button> */}
       </form>
       <br />
       <br />

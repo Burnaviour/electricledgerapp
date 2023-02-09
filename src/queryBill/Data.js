@@ -1,6 +1,12 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect, createContext } from "react";
+import { DataContainer,
+  CenteredDiv,
+  RowW,ColumnW,ContainerW,BoxW, LabelW,LabelW1, RowW1
+  
+  } from "./queryElements";
+
 // import Button from "react-bootstrap/Button";
 
 let resultHistory;
@@ -87,13 +93,57 @@ function getHistory(data) {
     const date = new Date(item.Timestamp.seconds * 1000);
     const dateString = date.toLocaleString();
     return (
-      <div key={key}>
+<>
+
+
+      {/* <div key={key}>
         <p>Name: {item.Value.name}</p>
         <p>Transaction Id :{item.TxId}</p>
         <p>Time: {dateString}</p>
         <p>Address: {item.Value.address}</p>
         <p>Units: {item.Value.units}</p>
-      </div>
+      </div> */}
+
+<CenteredDiv>
+          
+<DataContainer key={key}>
+  
+  
+  <ContainerW>
+  {/* <LabelW>-• Record No: key1 •-</LabelW> */}
+    <RowW>
+      <ColumnW>
+        <LabelW>Name</LabelW>
+        <BoxW>{item.Value.name}</BoxW>
+      </ColumnW>
+      <ColumnW>
+        <LabelW>Time Stamp</LabelW>
+        <BoxW>{dateString}</BoxW>
+      </ColumnW>
+    </RowW>
+    <RowW>
+      <ColumnW>
+        <LabelW>Address</LabelW>
+        <BoxW>{item.Value.address}</BoxW>
+      </ColumnW>
+      <ColumnW>
+        <LabelW>Units</LabelW>
+        <BoxW>{item.Value.units}</BoxW>
+      </ColumnW>
+    </RowW>
+    <RowW1>
+      <LabelW1>Transaction Id</LabelW1>
+      <BoxW>{item.TxId}</BoxW>
+    </RowW1>
+  </ContainerW>
+
+
+
+</DataContainer>
+
+</CenteredDiv>
+
+</>
     );
   });
 }
@@ -103,9 +153,43 @@ function getResults(data) {
     data.success &&
     data.result.map((result) => (
       <div key={result.key}>
-        <p>Name: {result.value.name}</p>
+        {/* <p>Name: {result.value.name}</p>
         <p>Address: {result.value.address}</p>
-        <p>Units: {result.value.units}</p>
+        <p>Units: {result.value.units}</p> */}
+
+
+        <DataRow>
+          <DataLabel>Name</DataLabel>
+            <DataContainer>
+            <DataText1>
+            {result.value.name}
+            </DataText1>
+            </DataContainer>
+        </DataRow>
+
+        <DataRow>
+          <DataLabel>Address</DataLabel>
+            <DataContainer>
+            <DataText1>
+            {result.value.address}
+            </DataText1>
+            </DataContainer>
+        </DataRow>
+
+        <DataRow>
+          <DataLabel>Units</DataLabel>
+            <DataContainer>
+            <DataText1>
+            {result.value.units}
+            </DataText1>
+            </DataContainer>
+        </DataRow>
+          
+
+
+
+
+
       </div>
     ));
 }
