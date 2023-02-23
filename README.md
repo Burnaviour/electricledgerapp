@@ -1,4 +1,4 @@
-#ElectricLedger
+<h1>ElectricLedger</h1>
 A React front-end and Node.js back-end app built with Hyperledger Fabric for secure and transparent record-keeping of electrical energy transactions.
 
 Getting Started
