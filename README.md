@@ -1,10 +1,10 @@
-##ElectricLedger
+#ElectricLedger
 A React front-end and Node.js back-end app built with Hyperledger Fabric for secure and transparent record-keeping of electrical energy transactions.
 
 Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-##Prerequisites
+#Prerequisites
 Node.js v12.x or higher
 npm v6.x or higher
 Hyperledger Fabric v2.x
